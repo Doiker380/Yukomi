@@ -1,0 +1,33 @@
+import assert from 'node:assert/strict';
+import {readFileSync, existsSync} from 'node:fs';
+import {computeHeightFitScale} from '../js/world/explorer.js';
+import {MEMORY_ANCHORS} from '../js/data/memory-anchors.js';
+import {assetUrl} from '../js/data/asset-manifest.js';
+import {memoriesAt} from '../js/data/memories.js';
+const root = new URL('../', import.meta.url);
+const read = path => readFileSync(new URL(path, root), 'utf8');
+const explorer = read('js/world/explorer.js');
+const library = read('js/scenes/library.js');
+const css = read('css/library.css');
+const anchors=MEMORY_ANCHORS.yukoteca;
+assert.equal(anchors.length,1,'No duplicar el marco');
+const frame=anchors[0];
+assert.equal(frame.id,'marco');
+assert.equal(frame.painted,true);
+assert.equal(frame.assetId,undefined,'Usar cuadro del fondo y no otro PNG');
+assert.deepEqual([frame.x,frame.y],[13.8,74]);
+assert(memoriesAt('yukoteca','marco').some(item=>item.id==='postal-estelar'));
+assert.equal(assetUrl('object.yukoteca.marco_recuerdos'),null);
+assert(frame.glow?.path && frame.glow.viewBox, 'Marco con silueta configurada');
+assert(read('css/painted-glow.css').includes('.painted-glow-shape'));
+assert(!css.includes('border:3px solid #f7cc74'), 'No conservar contorno rectangular visible');
+assert(css.includes('.library-viewport.is-height-fitted'));
+assert(!explorer.includes('new ResizeObserver('), 'El zoom no debe responder a reflows internos');
+assert(explorer.includes("window.addEventListener('resize'"));
+assert(library.includes('explorer.reset();'));
+assert(!library.includes('requestAnimationFrame(()=>explorer.reset())'));
+for (const height of [420,560,660]) {
+ const fit=computeHeightFitScale(height,1000);
+ assert(fit*1000<height);
+}
+console.log('OK Yukoteca 2.9.6: zoom estable, un solo cuadro y glow de silueta.');

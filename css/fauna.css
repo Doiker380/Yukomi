@@ -1,0 +1,164 @@
+/* Yukofauna 1.4: microaventura vectorial — sin imágenes ni paquetes externos. */
+.fauna-experience { display: grid; gap: 15px; margin: 0 0 26px; }
+.fauna-scene { position: relative; isolation: isolate; overflow: hidden; height: clamp(390px, 47vw, 505px); min-height: 390px; border: 4px solid #fffdfb; border-radius: 24px; background: #b0d5e9; box-shadow: 0 18px 50px #425d7c30; }
+.fauna-landscape { position: absolute; inset: 0; width: 100%; height: 100%; }
+.fauna-night-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg,#191a4fd9,#334c80ae 65%,#594c8668); opacity: 0; transition: opacity .6s; pointer-events: none; }
+.fauna-scene.is-night .fauna-night-overlay { opacity: 1; }
+.fauna-sky-dots { position: absolute; z-index: 2; inset: 14% 7% auto; color: #fff1bd; text-align: center; font-size: 22px; letter-spacing: 22px; opacity: 0; pointer-events: none; transition: opacity .6s; text-shadow: 0 0 13px #fff9c6; }
+.fauna-scene.is-night .fauna-sky-dots { opacity: 1; }
+.fauna-glimmers { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+.fauna-glimmers i { position: absolute; width: 7px; height: 7px; background: #fff6b4; border-radius: 50%; box-shadow: 0 0 12px 4px #fff6b471; animation: faunaBlink 4s ease-in-out infinite; }
+.fauna-glimmers i:nth-child(1){left:32%;top:25%;animation-delay:-.6s}.fauna-glimmers i:nth-child(2){left:61%;top:41%;animation-delay:-1.6s}.fauna-glimmers i:nth-child(3){left:45%;top:37%;animation-delay:-2.9s}.fauna-glimmers i:nth-child(4){left:84%;top:53%;animation-delay:-.3s}.fauna-glimmers i:nth-child(5){left:15%;top:45%;animation-delay:-2.2s}.fauna-glimmers i:nth-child(6){left:49%;top:82%;animation-delay:-1.2s}
+.fauna-family { position:absolute; left:84%; top:49%; width:78px; height:100px; transform:translate(-50%,-50%); z-index:2; pointer-events:none; }
+.fauna-family-igloo { position:absolute; left:-28px; top:28px; width:64px; height:52px; border-radius:42px 42px 8px 8px; background:#ecf8f6; border:5px solid #c8dfe4; color:transparent; box-shadow:0 6px 1px #5c8f9130; }
+.fauna-family-igloo::after { content:""; position:absolute; bottom:-2px; left:16px; width:25px; height:32px; border-radius:24px 24px 0 0; background:#7391a9; }
+.fauna-family-penguin { position:absolute; right:0; top:13px; width:55px; height:66px; filter:drop-shadow(0px 5px 3px #33567544); }
+.fauna-family-penguin svg { width:100%; height:100%; }
+.fauna-scene-title { position: absolute; z-index: 4; left: 16px; top: 15px; color: #2a4962; font: 800 clamp(16px,2.5vw,21px) Georgia,serif; text-shadow: 0 1px 3px #fffdfbd9; line-height: 1.14; }
+.fauna-scene-title span { color: #9b6fc6; }
+.fauna-scene-title small { display: block; font: 700 10px system-ui,sans-serif; letter-spacing: .035em; margin-top: 3px; }
+.fauna-scene.is-night .fauna-scene-title { color: #fff0ff; text-shadow: 0 1px 6px #101034; }
+.fauna-time-button { position: absolute; z-index: 6; top: 13px; right: 12px; min-height: 44px; border: 1px solid #bdabdd; background: #faf3fff2; color: #564469; border-radius: 14px; padding: 9px 11px; font-size: 12px; font-weight: 850; cursor: pointer; }
+.fauna-time-button:focus-visible { outline: 3px solid #e9b258; outline-offset: 2px; }
+.fauna-fish-counter { position: absolute; z-index: 5; top: 70px; right: 13px; padding: 7px 10px; background: #f7fcffed; border: 1px solid #d7e9f1; border-radius: 12px; color: #46677e; font-size: 12px; font-weight: 850; }
+.fauna-hotspots { position: absolute; inset: 0; z-index: 3; }
+.fauna-hotspot { position: absolute; transform: translate(-50%,-50%); cursor: pointer; border: 0; background: transparent; padding: 3px; display: grid; place-items: center; gap: 1px; min-width: 70px; min-height: 70px; color: #3c3a57; touch-action: manipulation; transition: left .55s ease-in-out, top .55s ease-in-out; }
+.fauna-hotspot[hidden] { display: none !important; }
+.fauna-hotspot .fauna-figure { display: block; width: 66px; height: 75px; filter: drop-shadow(0px 7px 3px #33567544); transform-origin: 50% 80%; animation: faunaFloat 3.4s ease-in-out infinite; }
+.fauna-figure svg { width:100%; height:100%; overflow:visible; }
+.fauna-hotspot-label { font-size: 10px; line-height: 1.2; background: #fffdf1ee; color: #4a4964; font-weight: 850; padding: 4px 6px; border-radius: 8px; white-space: nowrap; border: 1px solid #ffffffaa; box-shadow: 0 3px 9px #243c4a15; }
+.fauna-hotspot:focus-visible { outline: 3px solid #ecb05a; outline-offset: 4px; border-radius: 12px; }
+.fauna-hotspot.is-discovered::after { content: '✓'; position: absolute; right: 0; top: 4px; border-radius: 50%; background: #daf3dc; border: 2px solid #fff; color:#37694e; font-size: 12px; line-height: 19px; width: 21px; height:21px; font-weight: 900; }
+.fauna-hotspot:hover .fauna-figure { filter: drop-shadow(0px 8px 5px #31536a65) brightness(1.06); }
+.fauna-penguin { z-index: 4; }
+.fauna-penguin .fauna-figure { width: 77px; height: 95px; }
+.fauna-penguin.is-hopping .fauna-figure { animation: faunaHop .32s ease-in-out infinite alternate; }
+.fauna-penguin.is-reunited .fauna-figure { animation: faunaFloat 3s ease-in-out infinite; }
+.fauna-owl .fauna-figure { width: 67px; height: 82px; animation-delay: -.5s; }
+.fauna-owl.is-flying .fauna-figure { animation: faunaFly .27s ease-in-out infinite alternate; }
+.fauna-cat .fauna-figure { width: 92px; height: 74px; animation-delay: -1.3s; }
+.fauna-cat.is-purring .fauna-figure { animation: faunaPurr .22s ease-in-out 6 alternate; }
+.fauna-flowers .fauna-figure { width: 89px; height: 92px; animation-delay:-.9s; }
+.fauna-flowers.is-dancing .fauna-figure { animation: faunaDance .24s ease-in-out 5 alternate; }
+.fauna-star { z-index: 4; }
+.fauna-star .fauna-figure { width: 54px; height: 54px; filter: drop-shadow(0 0 12px #fff1b9); animation: faunaStar 2.2s ease-in-out infinite; }
+.fauna-fish { z-index: 3; min-width: 48px; min-height: 48px; }
+.fauna-fish .fauna-figure { width: 45px; height: 38px; animation: faunaFish 2.1s ease-in-out infinite; }
+.fauna-fish:nth-last-child(2) .fauna-figure { animation-delay: -.8s; }
+.fauna-fish .fauna-hotspot-label { display: none; }
+.fauna-fish.is-discovered::after { display:none; }
+.fauna-hint { position: absolute; z-index: 5; left: 50%; bottom: 9px; transform: translateX(-50%); max-width: 94%; width:max-content; padding: 9px 12px; border-radius: 999px; background: #fff9e9ef; color: #495267; box-shadow:0 4px 12px #365b6331; font-size: 11px; font-weight: 800; text-align: center; pointer-events: none; }
+.fauna-panel { padding: clamp(14px,3vw,24px); border-radius: 21px; background: #fffdfbf2; border: 1px solid #fff; box-shadow: 0 13px 30px #4660791c; }
+.fauna-panel-top { display:flex; justify-content: space-between; align-items: center; gap:12px; }
+.fauna-overline { font-size: 10px; color:#817492; letter-spacing:.12em; font-weight:900; }
+.fauna-panel h2 { font: 800 24px Georgia,serif; margin:2px 0 0; color: #55446d; }
+.fauna-count { font-size:14px; font-weight:900; color:#7d6492; background:#f0e7f8; border-radius:10px; padding:7px 10px; }
+.fauna-progress { display:flex; align-items:center; gap:10px; color:#77618b; font-weight:800; font-size:12px; margin:13px 0 15px; }
+.fauna-track { flex: 1; min-width:70px; height:9px; border-radius:99px; overflow:hidden; background:#ede3ef; }
+.fauna-track > div { height:100%; width:0; border-radius:inherit; background:linear-gradient(90deg,#a7cecf,#dbb5ed); transition:width .25s; }
+.fauna-response { display:flex; gap:13px; padding:15px; min-height:92px; border-radius:16px; background:#f0f8f6; border:1px solid #d7eae5; align-items:flex-start; }
+.fauna-response-icon { font-size:31px; flex:none; }
+.fauna-response strong { display:block; font-size:16px; color:#504368; }
+.fauna-response p { margin:5px 0 0; font-size:14px; color:#555c71; line-height:1.5; }
+.fauna-bounce { animation:faunaPop .28s ease-out; }
+.fauna-replay { display:inline-flex; margin: 10px 0 0; padding: 9px 12px; border:1px solid #dac5ec; background:#f4ecfb; color:#634b7c; font-weight:800; font-size:12px; border-radius:11px; cursor:pointer; min-height:44px; }
+.fauna-replay[hidden] { display:none; }
+.fauna-replay:focus-visible { outline:3px solid #dba965; outline-offset:2px; }
+.fauna-quest-hint { margin: 13px 0 0; color: #655779; font-size: 13px; font-weight: 700; }
+.fauna-postcard { margin-top:15px; padding:17px; text-align:center; border:1px solid #f4d8c3; border-radius:16px; background:linear-gradient(135deg,#fff1df,#f7eafc); }
+.fauna-postcard[hidden] { display:none !important; }
+.fauna-postcard > div { font-size:30px; }
+.fauna-postcard h3 { font: 800 22px Georgia,serif; margin:6px 0; color:#5d467e; }
+.fauna-postcard p { margin:0; line-height:1.6; color:#625469; }
+.fauna-footnote { font-size:12px; line-height:1.5; color:#887d90; margin:12px 0 0; }
+@keyframes faunaFloat { 0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-4px) rotate(2deg)} }
+@keyframes faunaHop { 0%{transform:translateY(0) rotate(-8deg)}100%{transform:translateY(-10px) rotate(5deg)} }
+@keyframes faunaFly { 0%{transform:translateY(-4px) rotate(-7deg)}100%{transform:translateY(-13px) rotate(7deg)} }
+@keyframes faunaPurr { from{transform:translateX(-3px)}to{transform:translateX(3px)} }
+@keyframes faunaDance { from{transform:rotate(-11deg)}to{transform:rotate(11deg)} }
+@keyframes faunaStar {0%,100%{transform:scale(1)}50%{transform:scale(1.12)} }
+@keyframes faunaFish {0%,100%{transform:translateY(1px) rotate(-5deg)}50%{transform:translateY(-5px) rotate(6deg)} }
+@keyframes faunaBlink {0%,100%{opacity:.18;transform:scale(.8)}50%{opacity:.9;transform:scale(1.15)} }
+@keyframes faunaPop { from{opacity:.35;transform:translateY(8px)}to{opacity:1;transform:translateY(0)} }
+@media (max-width: 580px) {
+  .fauna-scene { height: clamp(465px,126vw,535px); min-height:465px; border-radius:20px; border-width:3px; }
+  .fauna-hotspot { min-width:60px; min-height:60px; }
+  .fauna-penguin .fauna-figure { width:69px; height:82px; }
+  .fauna-owl .fauna-figure { width:61px; height:73px; }
+  .fauna-cat .fauna-figure { width:77px; height:63px; }
+  .fauna-flowers .fauna-figure { width:75px; height:76px; }
+  .fauna-family { left:85%; top:48%; transform:translate(-50%,-50%) scale(.83); }
+  .fauna-fish { min-width:44px; min-height:44px; }
+  .fauna-fish .fauna-figure { width:36px; height:30px; }
+  .fauna-hotspot-label { font-size:9px; padding:3px 4px; }
+  .fauna-fish .fauna-hotspot-label { display:none; }
+  .fauna-scene-title { left:10px; top:10px; font-size:16px; }
+  .fauna-time-button { right:8px; top:8px; font-size:11px; }
+  .fauna-fish-counter { right:8px; top:62px; font-size:11px; }
+  .fauna-hint { display:none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fauna-hotspot, .fauna-hotspot .fauna-figure, .fauna-glimmers i, .fauna-bounce { animation:none!important; transition:none!important; }
+  .fauna-night-overlay, .fauna-sky-dots, .fauna-track > div { transition:none!important; }
+}
+/* Legibilidad del botón de regreso en pantallas pequeñas, conservada de 1.3. */
+.region-topbar .button-ghost { background: #fffafdde; color: #58466e; border: 1px solid #fffbff; box-shadow: 0 4px 12px #4a618020; white-space: nowrap; font-size:14px; padding:10px 13px; min-height:44px; }
+.region-topbar-label { text-align:right; }
+
+/* Yukofauna 1.5: diálogos sobre el escenario + actividades con movimiento. */
+.fauna-stage-dialogue[hidden], .fauna-butterfly[hidden], .fauna-hearts[hidden] { display:none!important; }
+.fauna-stage-dialogue { position:absolute; z-index:10; top:19%; left:auto; right:9px; width:min(60%, 255px); min-height:70px; display:flex; align-items:flex-start; gap:8px; padding:11px 31px 11px 10px; border-radius:16px; color:#514166; background:#fffaf3f6; border:2px solid #fff; box-shadow:0 8px 28px #29375342; pointer-events:none; }
+.fauna-stage-dialogue[data-side="left"] { left:9px; right:auto; }
+.fauna-stage-dialogue[data-position="lower"] { top:53%; }
+.fauna-stage-dialogue.is-appearing { animation:faunaSpeechPop .22s ease-out; }
+.fauna-stage-icon { font-size:24px; flex:none; }
+.fauna-stage-copy { min-width:0; }
+.fauna-stage-copy strong { font:800 13px/1.3 system-ui,sans-serif; color:#604a78; }
+.fauna-stage-copy p { margin:3px 0 5px; color:#49485d; font:600 12px/1.35 system-ui,sans-serif; }
+.fauna-stage-close { position:absolute; pointer-events:auto; cursor:pointer; right:3px; top:3px; width:29px; height:29px; display:grid; place-items:center; border:0; border-radius:9px; background:#eee5f7; color:#57476e; font-size:22px; line-height:1; }
+.fauna-stage-close:focus-visible,.fauna-stage-diary:focus-visible { outline:3px solid #dcad64;outline-offset:1px; }
+.fauna-stage-diary { pointer-events:auto; cursor:pointer; font:800 10px system-ui,sans-serif; color:#62517a; border:0; padding:4px 7px; border-radius:7px; background:#eadff5; }
+.fauna-diary-tip { color:#897c91; font-size:12px; margin:9px 0 0; }
+.fauna-mail,.fauna-yarn,.fauna-note { z-index:5; min-width:50px; min-height:50px; }
+.fauna-mail .fauna-figure { width:53px; height:52px; animation:faunaMailBounce 1.5s ease-in-out infinite; filter:drop-shadow(0 0 10px #fff7c9); }
+.fauna-yarn .fauna-figure { width:55px; height:55px; animation:faunaBallWiggle 1.8s ease-in-out infinite; }
+.fauna-yarn.is-rolling .fauna-figure { animation:faunaYarnSpin .7s ease-in-out 1; }
+.fauna-note .fauna-figure { width:54px; height:59px; animation:faunaNoteFloat 1.6s ease-in-out infinite; filter:drop-shadow(0 0 9px #fff6b3); }
+.fauna-mail .fauna-hotspot-label, .fauna-yarn .fauna-hotspot-label, .fauna-note .fauna-hotspot-label { font-size:10px; }
+.fauna-owl { transition:left 1.05s cubic-bezier(.17,.8,.23,1), top 1.05s ease-in-out; }
+.fauna-owl.is-flying .fauna-figure { animation:faunaFlyFast .25s ease-in-out infinite alternate; }
+.fauna-flight-trail { position:absolute; left:28%; top:20%; color:#fffde6; font-size:21px; text-shadow:0 0 8px #fff1ae; opacity:0; z-index:3; pointer-events:none; }
+.fauna-flight-trail.is-flying { animation:faunaTrailFlight 1s linear both; }
+.fauna-cat.is-napping .fauna-figure { animation:faunaFloat 4s ease-in-out infinite; }
+.fauna-cat.is-chasing .fauna-figure { animation:faunaCatLeap .4s ease-in-out 2; }
+.fauna-flowers[data-blooms="1"] .fauna-figure, .fauna-flowers[data-blooms="2"] .fauna-figure, .fauna-flowers[data-blooms="3"] .fauna-figure { filter:drop-shadow(0 0 9px #fff4b8); }
+.fauna-flowers[data-blooms="1"] .fauna-figure svg g:nth-of-type(1), .fauna-flowers[data-blooms="2"] .fauna-figure svg g:nth-of-type(-n+2), .fauna-flowers[data-blooms="3"] .fauna-figure svg g { filter:drop-shadow(0 0 9px #fff1ad) brightness(1.2); transform:scale(1.05); transform-box:fill-box; transform-origin:center; }
+.fauna-flowers.is-finale .fauna-figure { animation:faunaFlowerFinale .55s ease-in-out 5 alternate; }
+.fauna-butterfly { position:absolute; z-index:6; left:20%; top:49%; pointer-events:none; font-size:27px; color:#eeb0e9; text-shadow:0 0 7px #fff; }
+.fauna-butterfly.effect-play { animation:faunaButterflyFlight 3.9s ease-in-out both; }
+.fauna-hearts { position:absolute; z-index:6; left:64%; top:58%; pointer-events:none; font-size:24px; text-shadow:0 0 8px #fff; }
+.fauna-hearts.effect-play { animation:faunaHearts 2.5s ease-out both; }
+@keyframes faunaSpeechPop {from{opacity:0; transform:translateY(-9px) scale(.97)}to{opacity:1; transform:translateY(0) scale(1)}}
+@keyframes faunaMailBounce {0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-8px) rotate(5deg)}}
+@keyframes faunaNoteFloat {0%,100%{transform:translateY(0) rotate(-7deg)}50%{transform:translateY(-12px) rotate(8deg)}}
+@keyframes faunaBallWiggle {0%,100%{transform:rotate(-12deg)}50%{transform:rotate(15deg)}}
+@keyframes faunaYarnSpin {to{transform:rotate(320deg)}}
+@keyframes faunaFlyFast {from{transform:translateY(-9px) rotate(-13deg)}to{transform:translateY(6px) rotate(8deg)}}
+@keyframes faunaTrailFlight {0%{opacity:0;transform:translateX(110px) translateY(0)}25%{opacity:1}80%{opacity:.9}100%{opacity:0;transform:translateX(-120px) translateY(0)}}
+@keyframes faunaCatLeap {0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-21px) rotate(9deg)}}
+@keyframes faunaFlowerFinale {from{transform:rotate(-13deg) scale(1)}to{transform:rotate(13deg) scale(1.16)}}
+@keyframes faunaButterflyFlight {0%{opacity:0;transform:translate(0,70px) scale(.7)}12%{opacity:1}35%{transform:translate(45px,8px) rotate(12deg)}65%{transform:translate(110px,-30px) rotate(-8deg)}90%{opacity:1}100%{opacity:0;transform:translate(165px,-100px) scale(1.3)}}
+@keyframes faunaHearts {0%{opacity:0;transform:translateY(10px)}20%{opacity:1}80%{opacity:1}100%{opacity:0;transform:translateY(-80px) scale(1.4)}}
+@media(max-width:580px){
+  .fauna-stage-dialogue { top:20%; width:60%; max-width:235px; max-height:168px; padding:8px 27px 8px 8px; gap:5px; }
+  .fauna-stage-icon { font-size:20px; }
+  .fauna-stage-copy strong { font-size:12px; }
+  .fauna-stage-copy p { font-size:11px; line-height:1.35; }
+  .fauna-stage-diary { font-size:10px; }
+  .fauna-mail .fauna-figure,.fauna-yarn .fauna-figure,.fauna-note .fauna-figure { width:42px;height:46px; }
+  .fauna-mail .fauna-hotspot-label,.fauna-yarn .fauna-hotspot-label,.fauna-note .fauna-hotspot-label { font-size:9px; }
+}
+@media(prefers-reduced-motion:reduce){
+  .fauna-stage-dialogue,.fauna-owl,.fauna-flight-trail,.fauna-mail .fauna-figure,.fauna-yarn .fauna-figure,.fauna-note .fauna-figure,.fauna-butterfly,.fauna-hearts,.fauna-flowers.is-finale .fauna-figure,.fauna-cat.is-chasing .fauna-figure { animation:none!important;transition:none!important; }
+  .fauna-butterfly.effect-play,.fauna-hearts.effect-play { opacity:1; }
+}

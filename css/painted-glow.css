@@ -1,0 +1,127 @@
+/* Yukoverso 2.9.6: contorno luminoso opcional para objetos ilustrados.
+   La forma proviene de un path SVG asociado al hotspot, nunca de su caja rectangular. */
+.memory-hotspot.scene-painted-hotspot.has-painted-glow,
+.memory-hotspot.scene-painted-hotspot.has-painted-glow:hover,
+.memory-hotspot.scene-painted-hotspot.has-painted-glow:focus-visible,
+.memory-hotspot.scene-painted-hotspot.has-painted-glow:active {
+  box-sizing: border-box;
+  border: 0;
+  border-radius: 0;
+  outline: none; /* El foco se representa en el contorno SVG, no en un rectángulo. */
+  background: transparent;
+  box-shadow: none;
+  filter: none;
+}
+.memory-hotspot.has-painted-glow .painted-glow-shape {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  overflow:visible;
+  pointer-events:none;
+  user-select:none;
+  --glow:var(--painted-glow-color,#ffe3a1);
+}
+.memory-hotspot.has-painted-glow .painted-glow-aura {
+  stroke:var(--painted-glow-aura-color,#d9bbfa);
+  stroke-width:6;
+  opacity:.64;
+  filter:blur(5px) drop-shadow(0 0 5px #e5bbff);
+  transition:opacity .22s ease;
+}
+.memory-hotspot.has-painted-glow .painted-glow-edge {
+  stroke:var(--glow);
+  stroke-width:1.9;
+  opacity:.85;
+  filter:drop-shadow(0 0 3px #ffe9b3) drop-shadow(0 0 7px #ffc76b);
+  transition:opacity .22s ease;
+}
+.memory-hotspot.has-painted-glow:is(:hover,:focus-visible) .painted-glow-aura,
+.memory-hotspot.has-painted-glow:active .painted-glow-aura {opacity:.97;}
+.memory-hotspot.has-painted-glow:is(:hover,:focus-visible) .painted-glow-edge,
+.memory-hotspot.has-painted-glow:active .painted-glow-edge {opacity:1;}
+/* Los identificadores y nombres siguen accesibles al lector de pantalla.
+   No se duplica una etiqueta visual sobre el cuadro dibujado. */
+.library-stage .memory-hotspot.has-painted-glow .memory-hotspot-label {
+  opacity:0;
+  visibility:hidden;
+}
+.library-stage .memory-hotspot.has-painted-glow:hover .memory-hotspot-label,
+.library-stage .memory-hotspot.has-painted-glow:focus-visible .memory-hotspot-label {
+  opacity:1;
+  visibility:visible;
+}
+/* La estrella existente marca que se puede tocar, sin crear otro marco. */
+.library-stage .memory-hotspot.has-painted-glow::before {
+  content:'✦';
+  position:absolute;
+  top:0;
+  right:0;
+  color:#fff5bc;
+  font-size:20px;
+  line-height:1;
+  text-shadow:0 0 6px #a7732f,0 0 11px #ffe3a0;
+  background:none;
+  border:0;
+  box-shadow:none;
+  width:auto;
+  height:auto;
+  animation:none;
+  opacity:.94;
+  transform:none;
+  pointer-events:none;
+}
+/* En móvil no dejamos una etiqueta permanente sobre los detalles ilustrados. */
+@media (hover:none) {
+  .library-stage .memory-hotspot.has-painted-glow .memory-hotspot-label {
+    opacity:0;
+    visibility:hidden;
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  .memory-hotspot.has-painted-glow .painted-glow-aura,
+  .memory-hotspot.has-painted-glow .painted-glow-edge {transition:none;}
+}
+
+/* 2.9.7 — Destellos que siguen trazos del fondo en escenas panorámicas.
+   No hay cajas, sprites duplicados ni animaciones continuas en móvil. */
+.observatory-illustrated .scene-painted-glow-layer {
+  position:absolute; inset:0; width:100%; height:100%;
+  z-index:3; overflow:hidden; pointer-events:none; user-select:none;
+}
+.observatory-illustrated .scene-painted-glow-object {--scene-painted-color:#ffe3a1;}
+.observatory-illustrated .scene-painted-glow-aura {
+  stroke:var(--scene-painted-color);
+  stroke-width:12;
+  opacity:.44;
+  filter:blur(5px);
+}
+.observatory-illustrated .scene-painted-glow-edge {
+  stroke:var(--scene-painted-color);
+  stroke-width:2.6;
+  opacity:.83;
+  filter:drop-shadow(0 0 4px var(--scene-painted-color));
+}
+.observatory-illustrated .scene-painted-glow-object.is-subtle .scene-painted-glow-aura {opacity:.25;stroke-width:9;}
+.observatory-illustrated .scene-painted-glow-object.is-subtle .scene-painted-glow-edge {opacity:.5;stroke-width:2;stroke-dasharray:2 12;}
+/* El fondo SVG de emergencia tiene una geografía distinta. */
+.observatory-fallback .scene-painted-glow-layer {display:none;}
+
+/* El telescopio usa un trazado de referencia ampliado a 2×. */
+.observatory-illustrated .scene-painted-glow-object[data-glow-region-object="telescopio"] .scene-painted-glow-aura {stroke-width:18;}
+.observatory-illustrated .scene-painted-glow-object[data-glow-region-object="telescopio"] .scene-painted-glow-edge {stroke-width:4;}
+
+/* La postal de Yukobservatorio usa el mismo componente de Yukoteca.
+   Mantener su etiqueta visible: no tiene pestaña propia entre las cuatro acciones. */
+.observatory-illustrated .memory-hotspot.has-painted-glow .painted-glow-shape {overflow:visible;}
+.observatory-fallback .memory-hotspot.has-painted-glow .painted-glow-shape {display:none;}
+.observatory-fallback .memory-hotspot.has-painted-glow .memory-hotspot-icon {visibility:visible;}
+
+/* No resucitar un rectángulo dorado en hover o al usar teclado. */
+.observatory-illustrated:not(.observatory-fallback) .story-hotspot:is(:hover,:active,:focus-visible) {
+  outline:none; box-shadow:none;
+}
+.observatory-illustrated:not(.observatory-fallback) .story-hotspot:focus-visible .story-hotspot-label {
+  outline:2px solid #ffdf94; outline-offset:3px;
+  box-shadow:0 0 9px #ffe6af;
+}

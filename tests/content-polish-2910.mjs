@@ -1,0 +1,35 @@
+import assert from 'node:assert/strict';
+import {existsSync} from 'node:fs';
+import {resolve} from 'node:path';
+import {getMemory, memoriesAt, MEMORIES} from '../js/data/memories.js';
+import {LIBRARY_SCENE} from '../js/data/library-scene.js';
+import {LIBRARY_ALBUMS, LIBRARY_PHOTOS} from '../js/data/library-content.js';
+import {MEMORY_ANCHORS} from '../js/data/memory-anchors.js';
+import {FAUNA_TEXT, FAUNA_MESSAGES} from '../js/data/fauna-content.js';
+import {REGIONS} from '../js/map.js';
+const root=resolve(import.meta.dirname,'..');
+assert.deepEqual(LIBRARY_SCENE.navigation.filter(item=>item.enabled!==false).map(x=>x.id),['albumes','fotos']);
+assert.equal(LIBRARY_SCENE.start,'fotos');
+assert.deepEqual(REGIONS.find(x=>x.id==='yukoteca').objects.map(x=>x.id),['albumes','fotos']);
+assert.equal(LIBRARY_PHOTOS.filter(x=>x.id.startsWith('foto-')).length,24);
+assert.equal(LIBRARY_PHOTOS.filter(x=>x.id.startsWith('captura-skin-')).length,19);
+for(const i of [21,22,23,24]){
+ const id=`foto-${String(i).padStart(2,'0')}`,m=getMemory(id);
+ assert(m?.type==='image' && existsSync(resolve(root,m.src)), id);
+ assert(m.description && /(?:tu|tus|contigo|nuestro|nuestra|nosotros|te|tú|compartid)/i.test(m.description),`${id} no habla a Yuko`);
+}
+assert.match(getMemory('foto-21').description,/200 horas/);
+assert.match(getMemory('foto-22').description,/Berry/);
+assert.match(getMemory('foto-23').description,/contigo/);
+assert.match(getMemory('foto-24').description,/contigo/);
+assert(memoriesAt('yukobservatorio','recuerdo').some(m=>m.id==='foto-21'));
+assert(memoriesAt('yukopolis','museo').some(m=>m.id==='foto-22'));
+assert(memoriesAt('yukopolis','computadora').some(m=>m.id==='foto-23'));
+assert.equal(MEMORY_ANCHORS.yukofauna.length,0,'No debe quedar la foto provisional de Yukofauna');
+assert(!getMemory('boceto-pinguino').locations.some(l=>l.region==='yukofauna'));
+assert.match(FAUNA_TEXT.labels.jardin,/flores/i);
+assert(!/musical|música/i.test(FAUNA_TEXT.labels.jardin));
+assert(!/musical|música|melodía/i.test(JSON.stringify([FAUNA_MESSAGES.flowersReminder,FAUNA_MESSAGES.flowersStart])));
+assert(LIBRARY_ALBUMS.find(x=>x.id==='momentos')?.pages.some(p=>p.memoryId==='foto-21'));
+assert(LIBRARY_ALBUMS.find(x=>x.id==='skins-match')?.pages.some(p=>p.memoryId==='foto-22'));
+console.log('OK 2.9.10: 43 imágenes, correcciones 21-24, 2 secciones, fauna sin demo, flores sin música.');

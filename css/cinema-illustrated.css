@@ -1,0 +1,79 @@
+/* Yukocine 2.6 · Interfaz modular para escenario provisional y arte futuro.
+ * Los hotspots son HTML sobre el mismo lienzo 1800x1000 que el fondo.
+ * No se crean sprites ni se incrustan botones en la ilustración.
+ */
+.story-world-yukocine {
+  --surface:#f5e9f2;--ink:#59446e;--accent:#79517d;
+  border-color:#f7e0b0;
+  background:linear-gradient(135deg,#fff7eb 0%,#f4e7f3 55%,#efe4fa 100%);
+}
+.story-world-yukocine .story-headline strong {color:#68436f;}
+.story-world-yukocine .story-headline small {color:#916c7f;}
+.story-world-yukocine .story-tabs {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;min-width:min(100%,390px)}
+.story-world-yukocine .story-tab {white-space:normal;line-height:1.2;padding:10px 8px;min-height:44px;border-radius:12px;border:1px solid #ccaa9d;background:#fff6ea;color:#72466b;box-shadow:0 2px 0 #d7b88950}
+.story-world-yukocine .story-tab.is-active,.story-world-yukocine .story-tab:hover {background:#744e79;border-color:#744e79;color:#fff6e8}
+.story-world-yukocine .story-shell {border-color:#efdbb8;box-shadow:0 3px 18px #68456e33;}
+.story-world-yukocine .story-viewport {height:clamp(430px,66svh,610px);}
+.story-world-yukocine .story-viewport.is-height-fitted {overflow-y:hidden;overscroll-behavior-y:none;}
+.story-world-yukocine .story-hotspot {
+  width:300px;height:255px;min-width:0;min-height:0;padding:0;
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-end;
+  border:2px solid #f9e2aeaa;border-radius:20px;
+  background:linear-gradient(to bottom,#fff8dc07 15%,#26172e08 62%,#24182d32 100%);
+  box-shadow:inset 0 0 22px #fff4c01a,0 5px 20px #21133227;
+  filter:none;transition:background-color .18s,border-color .18s;
+}
+.story-world-yukocine .story-hotspot:hover,
+.story-world-yukocine .story-hotspot:focus-visible {border-color:#fff4c8;background-color:#fff4bb21;box-shadow:inset 0 0 26px #fff0b54d,0 0 15px #ffdf9a85;}
+.story-world-yukocine .story-hotspot-symbol {
+  position:absolute;right:10px;top:10px;display:grid;place-items:center;
+  width:52px;height:52px;min-width:0;min-height:0;font-size:29px;
+  background:#5d3677e6;color:#fff8e8;border:2px solid #ffe4a2;
+  border-radius:50%;box-shadow:0 3px 11px #21133677;transition:none;
+}
+.story-world-yukocine .story-hotspot:hover .story-hotspot-symbol {transform:none;}
+.story-world-yukocine .story-hotspot-label {
+  display:block;width:max-content;max-width:94%;white-space:normal;
+  font:800 25px/1.18 Georgia,serif;text-align:center;
+  border:2px solid #ffe4a2;border-radius:13px;background:#4d3157f0;
+  color:#fff3dd;padding:12px 17px;margin:0 8px 9px;box-shadow:0 4px 13px #24153379;
+}
+.story-world-yukocine .story-hotspot.is-discovered {border-color:#d4ebbaab;}
+.story-world-yukocine .story-hotspot.is-discovered .story-hotspot-label::after {color:#b9eda5;}
+.story-world-yukocine .story-progress {background:#fffbf2;border-color:#e4cda8;}
+.story-world-yukocine .story-progress h2 {color:#6c4f74;}
+.story-world-yukocine .story-move-help {bottom:9px;}
+@media(min-width:900px) {
+  /* En escritorio la altura del visor acompaña al ancho: sin una franja vacía lateral. */
+  .story-world-yukocine .story-viewport {height:clamp(610px,58vw,700px);}
+}
+@media(max-width:650px) {
+  .story-world-yukocine .story-header {gap:8px;}
+  .story-world-yukocine .story-tabs {min-width:0;width:100%;gap:6px;}
+  .story-world-yukocine .story-tab {font-size:12px;}
+  .story-world-yukocine .story-hotspot {width:305px;height:260px;}
+}
+@media(prefers-reduced-motion:reduce) {
+  .story-world-yukocine .story-hotspot {transition:none;}
+}
+/* Arte definitivo: zonas transparentes sobre paneles, mostrador y pantalla. */
+.story-world-yukocine.cinema-final-art .story-hotspot{border:0;background:transparent;box-shadow:none;width:260px;height:180px;min-width:110px;min-height:110px;}
+.story-world-yukocine.cinema-final-art .story-hotspot[data-id="cartelera"]{width:410px;height:230px;}
+.story-world-yukocine.cinema-final-art .story-hotspot[data-id="proyector"]{width:360px;height:200px;}
+.story-world-yukocine.cinema-final-art .story-hotspot-symbol{visibility:hidden;}
+.story-world-yukocine.cinema-final-art .story-hotspot::before{content:'✦';position:absolute;right:5px;top:5px;font-size:28px;color:#ffe9a4;text-shadow:0 0 14px #edc985;pointer-events:none;animation:cineGlow 4s ease-in-out infinite;}
+.story-world-yukocine.cinema-final-art .story-hotspot-label{position:absolute;top:100%;font-size:19px;padding:7px 12px;margin:0;}
+.story-world-yukocine.cinema-final-art .story-hotspot:hover,.story-world-yukocine.cinema-final-art .story-hotspot:focus-visible{background:transparent;box-shadow:0 0 18px #ffe3a755;outline:2px solid #ffe6a4;}
+.story-world-yukocine.cinema-final-art .story-hotspot:active{background:#ffe7ac22;}
+.story-world-yukocine.cinema-final-art .story-zoom{position:static;display:flex;justify-content:flex-end;gap:8px;padding:8px;background:#eee2f1;}
+.story-world-yukocine.cinema-final-art .story-move-help{display:none;}
+@keyframes cineGlow{50%{opacity:.6;transform:scale(.9)}}
+@media(prefers-reduced-motion:reduce){.story-world-yukocine.cinema-final-art *::before{animation:none!important;}}
+
+.cinema-youtube-frame{display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:12px;background:#21182e}
+.cinema-edit-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cinema-edit-card{min-height:165px;align-content:center;text-align:center;border:2px solid #d9b777;background:linear-gradient(145deg,#2d2349,#674278);color:#fff4d7;box-shadow:inset 0 0 28px #f8d49222,0 8px 20px #281d4033}
+.cinema-edit-card small{color:#f5d9a0}
+.cinema-edit-card:hover,.cinema-edit-card:focus-visible{box-shadow:inset 0 0 36px #f8d49255,0 0 0 3px #f5d897}
+.cinema-edit-art{font-size:35px;line-height:1.3;color:#fbe2a5;text-shadow:0 0 16px #f5d183}
+@media(max-width:380px){.cinema-edit-grid{grid-template-columns:1fr}}

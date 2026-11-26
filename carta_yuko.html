@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>Yukoverso · Carta para Yuko</title>
+  <meta name="theme-color" content="#302953">
+  <style>
+    :root{font-family:Georgia,serif;color:#584566;background:#262448;color-scheme:light}
+    *{box-sizing:border-box}body{margin:0;min-height:100svh;display:grid;place-items:center;padding:24px 12px;background:radial-gradient(circle at 50% 20%,#7066a1,#262448 80%)}
+    main{width:min(100%,760px);background:#fffaf0;border:6px solid #f3e0dd;border-radius:24px;padding:clamp(20px,6vw,45px);box-shadow:0 30px 80px #17132b9f}
+    small{letter-spacing:.18em;color:#9c83aa;font:800 12px system-ui}h1{font-size:clamp(26px,6vw,42px);margin:14px 0 23px;color:#675283}
+    #letter{white-space:pre-wrap;line-height:1.9;font-size:clamp(16px,3vw,19px)}
+    #letter p{margin:0 0 22px}#letter .sign{text-align:right;font-style:italic}a{display:inline-block;color:#644e87;background:#eadcf1;padding:13px;border-radius:12px;text-decoration:none;font:800 13px system-ui}
+    footer{font:500 12px system-ui;color:#9684a1;margin-top:25px}
+  </style>
+</head>
+<body><main>
+  <small>✦ UNA CARTITA PARA YUKO ✦</small>
+  <h1 id="title">Yukooo, te hice una carta</h1>
+  <article id="letter" aria-label="Carta para Yuko"><p>Cargando carta…</p></article>
+  <a href="index.html">← Volver al Yukoverso</a><div id="extraLetterLink" hidden style="margin-top:14px"></div>
+  <footer>Te la dejé aquí para que la puedas leer cuando quieras 💜.</footer>
+</main>
+<script type="module">
+  import { OBSERVATORY } from './js/data/experience-content.js?v=2.9.11';
+  const data=OBSERVATORY.letter;
+  document.querySelector('#title').textContent=data.title;
+  const main=document.querySelector('#letter');main.replaceChildren();
+  const add=(txt,cls='')=>{const p=document.createElement('p');p.textContent=txt;if(cls)p.className=cls;main.append(p);};
+  add(data.greeting);data.paragraphs.forEach(p=>add(p));add(data.closing,'sign');
+  // Carta independiente futura: aparece solo cuando tenga una URL real.
+  const url=OBSERVATORY.extraLetterUrl?.trim();
+  if(url){
+    try {
+      const target=new URL(url,window.location.href);
+      if(['https:','http:'].includes(target.protocol)){
+        const holder=document.getElementById('extraLetterLink');
+        const link=document.createElement('a');
+        link.href=target.href;link.target='_blank';link.rel='noopener noreferrer';
+        link.textContent='💜 Ver mi otra cartita (con fotitos)';
+        holder.append(link);holder.hidden=false;
+      }
+    } catch { /* URL todavía sin configurar */ }
+  }
+
+</script></body></html>

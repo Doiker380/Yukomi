@@ -1,0 +1,120 @@
+/* YUKOVERSO 2.2 — Yukoteca. Estilos encapsulados para no alterar Fauna ni Yukópolis. */
+[hidden] {display:none !important}
+#regionScreen:has(#libraryExperience:not([hidden])) .region-content {max-width:1270px;padding:0 clamp(9px,2vw,22px) 46px}
+#regionScreen:has(#libraryExperience:not([hidden])) .region-content-text h1 {font-size:clamp(26px,4.5vw,40px);margin:7px 0 5px}
+#regionScreen:has(#libraryExperience:not([hidden])) .region-content-text p {font-size:13px;line-height:1.45;margin:0 auto 12px;max-width:680px}
+.library-experience {display:block;min-width:0;width:100%}
+.library-explorer {min-width:0;width:100%;padding:12px;background:#f8f1f9;border:2px solid #fff8ee;border-radius:22px;box-shadow:0 14px 35px #3d335a28;color:#51445e}
+.library-toolbar {display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:10px}
+.library-toolbar-heading {display:grid;gap:2px}
+.library-toolbar-heading small {font:800 10px system-ui;letter-spacing:.1em;color:#9171a8}
+.library-toolbar-heading strong {font:800 21px Georgia,serif;color:#584673}
+.library-toolbar-heading span {font:500 12px system-ui;color:#78687e}
+.library-tabs {display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.library-tabs button {min-height:43px;padding:9px 14px;border:1px solid #d2b9d7;border-radius:99px;background:#fffaf5;color:#674e79;font:800 12px system-ui;cursor:pointer}
+.library-tabs button.is-active,.library-tabs button:hover {background:#715c96;color:#fff;border-color:#715c96}
+.library-explorer button:focus-visible {outline:3px solid #e7ae64;outline-offset:3px}
+.library-message {position:sticky;top:8px;z-index:35;display:flex;align-items:center;gap:10px;padding:12px 44px 12px 13px;margin:3px 0 8px;border:1px solid #d6badb;border-radius:14px;background:#fffbed;box-shadow:0 5px 18px #5f4a7136}
+.library-message-icon {font-size:29px;line-height:1}
+.library-message-title {font:800 14px system-ui;color:#604b79}
+.library-message-body {font:500 13px/1.45 system-ui;color:#6f607a;margin:3px 0 0}
+.library-message-close {position:absolute;right:7px;top:7px;min-width:34px;min-height:34px;border:0;border-radius:9px;background:#eee2ef;color:#5f4a70;cursor:pointer}
+.library-shell {min-width:0;position:relative;overflow:hidden;border:4px solid #fff9ed;border-radius:19px;background:#796c9b;box-shadow:inset 0 0 8px #413f6a3b}
+.library-viewport {height:clamp(460px,62svh,665px);overflow:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y;scrollbar-color:#a78db8 #f1e3ee;scrollbar-width:thin;cursor:grab}
+.library-viewport.is-dragging {cursor:grabbing;user-select:none}
+.library-viewport:focus-visible {outline:3px solid #f2ca8a;outline-offset:-5px}
+.library-world-space {position:relative;width:1800px;height:1000px}
+.library-stage {position:absolute;inset:0;width:1800px;height:1000px;isolation:isolate;overflow:hidden}
+.library-landscape {position:absolute;inset:0;width:100%;height:100%;pointer-events:none;user-select:none}
+.library-sign {position:absolute;z-index:1;top:16px;left:32%;font:800 19px Georgia,serif;color:#74567c;background:#fff7e9e6;border-radius:18px;padding:11px 22px;border:2px solid #fff3df;box-shadow:0 8px 20px #40385d32;pointer-events:none}
+.library-decoration {position:absolute;pointer-events:none;z-index:2}
+.library-floating-page {top:19%;left:35%;font-size:29px;letter-spacing:40px;color:#fff2b8;animation:libraryFloat 4s ease-in-out infinite}
+.library-hotspot {position:absolute;z-index:12;transform:translate(-50%,-50%);display:grid;place-items:center;gap:6px;min-width:150px;min-height:137px;padding:5px;background:transparent;color:#604e72;border:0;cursor:pointer;touch-action:manipulation;filter:drop-shadow(0 8px 7px #37304d55)}
+.library-hotspot-symbol {display:grid;place-items:center;font-size:51px;width:86px;height:86px;border:4px solid #f9e9d4;border-radius:50%;background:#f7e7f4e6;box-shadow:0 6px 14px #5d466847;transition:transform .2s, background .2s}
+.library-hotspot:hover .library-hotspot-symbol {transform:translateY(-8px) rotate(-5deg);background:#fff2d6}
+.library-hotspot-label {background:#fff7eafa;color:#695079;border:2px solid #fff3e5;border-radius:20px;padding:7px 12px;font:800 13px system-ui;white-space:nowrap}
+.library-hotspot.is-discovered .library-hotspot-symbol {border-color:#9ed4ae}
+.library-hotspot.is-discovered .library-hotspot-label::after {content:' ✓';color:#518a66}
+.library-art {left:24%;top:62%}
+.library-albums {left:51%;top:58%}
+.library-photos {left:82%;top:62%}
+.library-photos .library-hotspot-symbol {background:#fff0dd;border-color:#f6d4a8}
+.library-zoom {position:absolute;z-index:25;right:10px;bottom:37px;display:grid;gap:5px}
+.library-zoom button {min-width:44px;min-height:44px;border:1px solid #e2d2e9;border-radius:12px;background:#fffaff;color:#604d7b;box-shadow:0 4px 12px #36395c67;font-size:21px;font-weight:800;cursor:pointer}
+.library-pan-hint {position:absolute;bottom:7px;left:50%;transform:translateX(-50%);padding:5px 13px;border-radius:99px;background:#fff6eaf0;color:#615172;font:750 11px system-ui;white-space:nowrap;pointer-events:none}
+.library-progress {position:relative;margin-top:12px;padding:17px;background:#fffaff;border:1px solid #e8d8e9;border-radius:17px;display:grid;grid-template-columns:1fr auto;gap:8px 10px}
+.library-progress small {font:800 10px system-ui;color:#a28ab5;letter-spacing:.1em}
+.library-progress h2 {font:800 21px Georgia,serif;color:#56446d;margin:4px 0}
+.library-count {align-self:center;background:#e7d5f2;color:#634d78;border-radius:11px;padding:9px 13px;font-weight:850}
+.library-progress p {grid-column:1/-1;font:500 13px/1.5 system-ui;color:#746580;margin:0}
+.library-track {grid-column:1/-1;overflow:hidden;background:#e8dce9;border-radius:99px;height:9px}
+.library-track-fill {height:100%;width:0;background:linear-gradient(90deg,#9abfbe,#bda4da);border-radius:inherit;transition:width .3s}
+.library-stamp {grid-column:1/-1;background:#fff2d6;border:1px dashed #d6ae78;border-radius:12px;padding:13px;color:#795c54;font-weight:750}
+/* Modal usable en teléfono y escritorio, con scroll interno sin tapar contenidos. */
+.library-dialog {padding:16px;background:#fffafe;color:#584a70;border:0;border-radius:20px;box-shadow:0 25px 90px #17122cb0;width:min(94vw,820px);max-height:min(89svh,850px);overflow:auto}
+.library-dialog::backdrop {background:#1c193ac4}
+.library-dialog-top {position:sticky;top:-16px;z-index:10;background:#fffafe;border-bottom:1px solid #e9dce8;padding:8px 0 13px;display:flex;align-items:center;justify-content:space-between;gap:11px}
+.library-dialog-top h2 {font:800 clamp(18px,4vw,24px) Georgia,serif;color:#634c7a;margin:0;line-height:1.3}
+.library-dialog-close {min-width:43px;min-height:43px;flex-shrink:0;background:#e9def1;color:#5b4673;border:0;border-radius:11px;font:900 18px system-ui;cursor:pointer}
+.library-dialog-body {padding:12px 0 0;display:grid;gap:12px}
+.library-dialog-description {font:500 14px/1.55 system-ui;color:#756782;margin:0}
+.library-art-grid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}
+.library-art-card {min-width:0;text-align:left;display:grid;align-content:start;gap:6px;padding:9px;background:#f4ebf9;border:1px solid #decae7;border-radius:15px;color:#604a76;cursor:pointer}
+.library-art-card img {display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;background:#d6c0e5}
+.library-art-card strong {font:800 14px system-ui}
+.library-art-card span {font:500 12px system-ui;color:#83728e}
+.library-full-art,.library-album-page {margin:0;display:grid;justify-items:center;gap:9px;padding:10px;background:#f8f2f7;border:1px solid #eadbe8;border-radius:15px}
+.library-full-art img,.library-album-page img {display:block;width:100%;max-width:740px;max-height:min(56svh,620px);object-fit:contain;border-radius:10px;background:#ece7f5}
+.library-full-art figcaption,.library-album-page figcaption {font:500 13px/1.6 system-ui;color:#685b73;text-align:center}
+.library-page-actions {display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.library-secondary-button {border:1px solid #d9c3dc;border-radius:11px;padding:11px 12px;min-height:44px;background:#f4e9f8;color:#65517a;font:750 12px system-ui;cursor:pointer}
+.library-secondary-button:disabled {opacity:.35;cursor:not-allowed}
+.library-album-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.library-album-card {text-align:left;min-width:0;display:grid;align-content:start;gap:10px;padding:17px;border:1px solid #d7bfdf;border-radius:16px;background:#f3e8f6;color:#604774;cursor:pointer}
+.library-album-icon {font-size:39px}
+.library-album-card strong {font:800 17px Georgia,serif}
+.library-album-card span:not(.library-album-icon) {font:500 13px/1.5 system-ui;color:#786783}
+.library-album-card small {font:700 11px system-ui;color:#8b77a0}
+.library-page-info {display:flex;justify-content:space-between;gap:12px;align-items:center;padding:7px 8px}
+.library-page-info strong {font:800 17px Georgia,serif}
+.library-page-info span {font:750 13px system-ui;color:#867297}
+.library-album-text {padding:28px 22px;min-height:200px;display:flex;align-items:center;justify-content:center;text-align:center;font:500 17px/1.8 Georgia,serif;color:#745d7b;background:linear-gradient(130deg,#fff9e6,#f7edf5);border-radius:13px;border:1px solid #e4d5cf}
+@keyframes libraryFloat {50%{transform:translateY(-12px);opacity:.62}}
+@media(max-width:650px){
+  #regionScreen:has(#libraryExperience:not([hidden])) .region-content-text p {font-size:12px}
+  .library-explorer {padding:8px;border-radius:17px}
+  .library-toolbar-heading strong {font-size:17px}
+  .library-toolbar-heading span {font-size:11px}
+  .library-tabs {width:100%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px}
+  .library-tabs button {min-height:45px;font-size:11px;padding:6px 4px}
+  .library-viewport {height:clamp(420px,63svh,610px)}
+  .library-message {padding:10px 42px 10px 11px}
+  .library-message-body {font-size:12px}
+  .library-dialog {padding:12px;max-height:88svh}
+  .library-dialog-top {top:-12px}
+  .library-art-grid {grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+  .library-album-grid {grid-template-columns:1fr;gap:9px}
+  .library-page-actions {display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .library-page-actions button:first-child {grid-column:1/-1}
+  .library-secondary-button {font-size:11px;padding:10px 6px}
+  .library-art-card strong {font-size:12px}
+  .library-dialog-description {font-size:12px}
+}
+@media(prefers-reduced-motion:reduce){.library-floating-page{animation:none}.library-hotspot-symbol,.library-track-fill{transition:none}}
+
+/* Yukoteca 2.3.4: el motor ajusta el alto al entrar (scroll horizontal inicial).
+   El zoom manual puede recuperar el desplazamiento vertical cuando se acerca. */
+.library-viewport {overflow-x:auto;overflow-y:auto;}
+.library-toolbar-heading strong {max-width:100%;}
+.library-sign {font-size:28px;}
+
+/* En pantallas anchas se utiliza una altura mayor para evitar una franja
+   vacía lateral al ajustar el panorama de 1800×1000 por su altura. */
+@media (min-width:651px) {
+  .library-viewport {height:clamp(560px,82svh,680px);}
+}
+.library-world-space {margin-inline:auto;}
+
+/* Yukoteca: el marco pintado usa el brillo de silueta en painted-glow.css. */
+/* Zoom de ajuste: toda la altura visible, scroll solo horizontal hasta que se acerque. */
+.library-viewport.is-height-fitted {overflow-y:hidden;}

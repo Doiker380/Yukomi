@@ -1,0 +1,105 @@
+/* YUKOVERSO 1.7 — Yukópolis, independiente de Yukofauna. */
+[hidden] { display:none !important; }
+#regionScreen:has(#cityExperience:not([hidden])) .region-content {max-width:1270px;padding:0 clamp(9px,2vw,22px) 44px;}
+#regionScreen:has(#cityExperience:not([hidden])) .region-content-text h1 {font-size:clamp(26px,4.5vw,40px);margin:7px 0 5px;}
+#regionScreen:has(#cityExperience:not([hidden])) .region-content-text p {font-size:13px;line-height:1.45;margin:0 auto 12px;max-width:690px;}
+.city-experience {display:block;min-width:0;width:100%;}
+.city-explorer {min-width:0;width:100%;background:#f8f5fd;padding:12px;border:2px solid #fff;border-radius:22px;box-shadow:0 14px 36px #5149792b;color:#55446c;}
+.city-toolbar {display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:11px;margin-bottom:10px;}
+.city-toolbar strong {display:block;font:800 18px Georgia,serif;color:#544169;}
+.city-toolbar small {display:block;font:500 12px system-ui;color:#716984;margin-top:3px;}
+.city-tabs {display:flex;align-items:center;flex-wrap:wrap;gap:5px;}
+.city-tabs button {border:1px solid #cdb7dc;background:#fffafd;color:#675276;border-radius:99px;padding:10px 12px;min-height:39px;font:750 12px system-ui;cursor:pointer;}
+.city-tabs button.is-active,.city-tabs button:hover {background:#7866a0;color:#fff;border-color:#7866a0;}
+.city-tabs button:focus-visible,.city-hotspot:focus-visible,.city-zoom button:focus-visible,.city-popup button:focus-visible {outline:3px solid #e4ad58;outline-offset:3px;}
+.city-message-dock {position:sticky;z-index:35;top:6px;display:flex;gap:10px;align-items:center;background:#fffaf0;border:1px solid #e1d0e8;border-radius:13px;padding:11px 44px 11px 13px;margin:3px 0 8px;box-shadow:0 5px 18px #6e587331;}
+.city-message-icon {font-size:29px;line-height:1;}
+.city-message-title {display:block;font-size:14px;color:#5d4772;}
+.city-message-text {font-size:13px;line-height:1.4;margin:2px 0 0;color:#62586f;}
+.city-message-close {position:absolute;right:7px;top:7px;border:0;background:#ebdfef;color:#58446c;border-radius:9px;min-width:32px;min-height:32px;cursor:pointer;}
+.city-shell {position:relative;min-width:0;border:4px solid #fff;border-radius:18px;overflow:hidden;background:#a1c4e4;box-shadow:inset 0 0 8px #30435628;}
+.city-viewport {width:100%;height:clamp(460px,62svh,660px);overflow:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y;scrollbar-color:#b69ac8 #f4ecf6;scrollbar-width:thin;cursor:grab;}
+.city-viewport.is-dragging {cursor:grabbing;user-select:none;}
+.city-viewport:focus-visible {outline:3px solid #f2d18e;outline-offset:-5px;}
+.city-world-space {position:relative;width:1800px;height:1000px;}
+.city-scene {position:absolute;inset:0;width:1800px;height:1000px;isolation:isolate;overflow:hidden;}
+.city-landscape {position:absolute;inset:0;width:100%;height:100%;pointer-events:none;user-select:none;}
+.city-floating-banners {position:absolute;top:12%;left:25%;width:60%;text-align:center;letter-spacing:52px;font-size:28px;color:#fff8d3;pointer-events:none;animation:cityTwinkle 4s ease-in-out infinite;}
+.city-scene-sign {position:absolute;top:20px;left:25px;z-index:2;color:#73618d;background:#fff9f1df;padding:11px 20px;border:2px solid #fff;border-radius:16px;font:800 19px Georgia,serif;pointer-events:none;box-shadow:0 7px 15px #73658b29;}
+.city-hotspot {position:absolute;z-index:9;display:grid;gap:4px;place-items:center;transform:translate(-50%,-50%);min-width:106px;min-height:108px;border:0;background:transparent;color:#554263;font:850 13px system-ui;cursor:pointer;touch-action:manipulation;filter:drop-shadow(0 4px 4px #67597648);}
+.city-hotspot-symbol {display:grid;place-items:center;font-size:40px;width:72px;height:72px;border:4px solid #fff4e6;border-radius:50%;background:#faf0facf;box-shadow:0 7px 15px #55466e3c;transition:transform .2s ease, background .2s;}
+.city-hotspot:hover .city-hotspot-symbol {transform:translateY(-7px) scale(1.06);background:#fff6cf;}
+.city-hotspot>span:last-child {border-radius:99px;border:2px solid #fff;padding:5px 11px;background:#fff8f1ec;color:#534363;white-space:nowrap;}
+.city-hotspot.is-discovered .city-hotspot-symbol {border-color:#c9e5cb;}
+.city-hotspot.is-discovered>span:last-child::after {content:' ✓';color:#44866c;}
+.city-plaza {left:24%;top:76%;} /* habitante sobre la calle principal */
+.city-calendar {left:36%;top:52%;}
+.city-mail {left:69%;top:54%;}
+.city-theater {left:90%;top:54%;}
+.city-speaking .city-hotspot-symbol {animation:cityBounce .6s ease;}
+.city-curtains-open .city-hotspot-symbol {animation:cityCurtain 1.1s ease-in-out;}
+.city-walker {position:absolute;z-index:5;top:78%;font-size:44px;pointer-events:none;filter:drop-shadow(0 5px 3px #4b526b66);}
+.city-walker-left {left:49%;animation:cityWalkOne 11s ease-in-out infinite alternate;}
+.city-walker-right {left:57%;animation:cityWalkTwo 14s ease-in-out infinite alternate;}
+.city-confetti {position:absolute;left:50%;top:56%;font-size:38px;color:#f9e29a;pointer-events:none;}
+.city-zoom {position:absolute;z-index:20;right:10px;bottom:37px;display:grid;gap:5px;}
+.city-zoom button {min-width:41px;min-height:41px;border:1px solid #dfcfe7;background:#fff9ff;color:#68577e;border-radius:12px;box-shadow:0 6px 11px #4f507747;font-weight:850;font-size:20px;cursor:pointer;}
+.city-pan-hint {position:absolute;bottom:7px;left:50%;transform:translateX(-50%);background:#fff9f4e8;color:#554768;border-radius:99px;padding:5px 13px;font:700 11px system-ui;white-space:nowrap;pointer-events:none;}
+.city-diary {background:#fffbff;border:1px solid #e9dcef;border-radius:16px;margin-top:12px;padding:16px;}
+.city-diary-top {display:flex;align-items:center;justify-content:space-between;gap:10px;}
+.city-diary-top small {color:#8a739f;font-size:11px;letter-spacing:.09em;font-weight:800;}
+.city-diary h2 {font:800 21px Georgia,serif;color:#514369;margin:3px 0 0;}
+.city-count {font-size:18px;background:#e8d5f4;color:#69517d;padding:8px 12px;border-radius:12px;}
+.city-diary p {color:#756883;font-size:13px;line-height:1.5;}
+.city-track {background:#ebdfec;border-radius:99px;height:9px;overflow:hidden;}
+.city-track-fill {height:100%;width:0;background:linear-gradient(90deg,#a6c9b1,#bda2e7);border-radius:inherit;transition:width .3s ease;}
+.city-diary-last {min-height:20px;}
+.city-citystamp {margin-top:12px;background:#f7e9cc;border:1px dashed #d9b47b;padding:11px;border-radius:12px;color:#876342;font-size:13px;font-weight:750;}
+.city-popup {border:0;border-radius:21px;background:#fffaff;color:#594a70;box-shadow:0 25px 100px #13162899;max-width:min(92vw,730px);width:100%;max-height:85svh;padding:18px;overflow:auto;}
+.city-popup::backdrop {background:#1c1b37ba;}
+.city-popup-header {position:sticky;top:-18px;z-index:3;display:flex;align-items:center;justify-content:space-between;gap:10px;background:#fffaff;padding:7px 0 14px;border-bottom:1px solid #eee1f3;}
+.city-popup-title {font:800 20px Georgia,serif;color:#59446f;}
+.city-popup-close {border:0;border-radius:10px;background:#ebe0f4;color:#5d4c70;min-width:39px;min-height:39px;font-weight:850;cursor:pointer;}
+.city-popup-desc {color:#766686;font-size:14px;line-height:1.5;}
+.city-months {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin-top:15px;}
+.city-month {border:1px solid #ddd0e7;border-radius:10px;background:#f7f0fa;padding:12px 6px;color:#634e7a;font:750 12px system-ui;cursor:pointer;min-height:46px;}
+.city-month.is-current {background:#7e69a4;color:#fff;border-color:#7e69a4;}
+.city-month-details {background:#f9f2e9;border:1px solid #eadeca;border-radius:12px;padding:15px;margin-top:13px;}
+.city-month-details strong {display:block;font:800 21px Georgia,serif;}
+.city-month-details p {font-size:14px;line-height:1.5;margin:8px 0;}
+.city-festival {width:100%;border:1px solid #ddb27d;background:#fff1d4;color:#7b5570;border-radius:10px;padding:12px;font-weight:850;cursor:pointer;}
+.city-letters {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:16px 0;}
+.city-envelope {display:grid;place-items:center;text-align:center;gap:8px;border:2px solid #e4c9de;border-radius:13px;background:#fff0ed;color:#775a80;font:800 13px system-ui;cursor:pointer;min-height:86px;padding:10px;}
+.city-envelope.is-opened {border-color:#9ec9b0;background:#f3fbf4;}
+.city-letter-reading {background:#fff8ee;border:1px solid #ecddc5;border-radius:15px;padding:18px;min-height:135px;}
+.city-letter-reading small {color:#997b7c;}
+.city-letter-reading h3 {font:800 21px Georgia,serif;color:#715b86;}
+.city-letter-reading p {font-size:14px;line-height:1.65;}
+@keyframes cityWalkOne {0%{transform:translateX(-150px)}100%{transform:translateX(95px)}}
+@keyframes cityWalkTwo {0%{transform:translateX(85px)}100%{transform:translateX(-75px)}}
+@keyframes cityTwinkle {50%{opacity:.43;transform:translateY(-8px)}}
+@keyframes cityBounce {50%{transform:translateY(-13px) rotate(-5deg)}}
+@keyframes cityCurtain {50%{transform:scale(1.3) rotate(10deg)}}
+@media (max-width:650px) {
+  #regionScreen:has(#cityExperience:not([hidden])) .region-content-text p {font-size:12px;}
+  .city-explorer {padding:8px;border-radius:17px;}
+  .city-toolbar strong {font-size:15px;}
+  .city-toolbar small {font-size:11px;}
+  .city-tabs {width:100%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;}
+  .city-tabs button {padding:8px 3px;font-size:10px;min-height:44px;}
+  .city-viewport {height:clamp(420px,62svh,620px);}
+  .city-message-dock {padding:10px 41px 10px 10px;gap:8px;}
+  .city-message-icon {font-size:23px;}
+  .city-message-text {font-size:12px;}
+  .city-zoom button {min-height:39px;min-width:39px;}
+  .city-months {grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;}
+  .city-month {font-size:11px;padding:9px 3px;}
+  .city-popup {padding:12px;}
+  .city-popup-header {top:-12px;}
+  .city-popup-title {font-size:18px;}
+  .city-envelope {font-size:12px;padding:6px;}
+}
+@media (prefers-reduced-motion:reduce) {
+ .city-walker,.city-floating-banners,.city-speaking .city-hotspot-symbol,.city-curtains-open .city-hotspot-symbol {animation:none!important;}
+ .city-track-fill {transition:none;}
+}

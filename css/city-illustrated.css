@@ -1,0 +1,35 @@
+/* Opt-in para objetos ya pintados: dimensión táctil independiente del dibujo. */
+.scene-painted-hotspot {width:var(--hotspot-width,100px);height:var(--hotspot-height,100px);min-width:calc(44px / var(--scene-scale,1));min-height:calc(44px / var(--scene-scale,1));padding:0;background:transparent;border:0;border-radius:14px;filter:none;}
+.scene-painted-hotspot .memory-hotspot-icon,.scene-painted-hotspot .city-hotspot-symbol {visibility:hidden;}
+.scene-painted-hotspot::before {content:'✦';position:absolute;right:3px;top:3px;color:#fff4b9;font-size:26px;line-height:1;text-shadow:0 0 7px #9c6dbb,0 0 15px #ffda91;pointer-events:none;animation:cityObjectPulse 3.8s ease-in-out infinite;}
+.scene-painted-hotspot .memory-hotspot-label,.scene-painted-hotspot>span:last-child {position:absolute;left:50%;top:100%;transform:translateX(-50%);width:max-content;max-width:190px;white-space:normal;text-align:center;font:700 15px/1.3 Georgia,serif;color:#fff6df;background:#493254e6;border:1px solid #e8c88c;border-radius:8px;padding:5px 9px;pointer-events:none;}
+.scene-painted-hotspot:focus-visible {outline:3px solid #fff3a9;outline-offset:4px;box-shadow:0 0 0 6px #644276;}
+.scene-painted-hotspot:hover,.scene-painted-hotspot:focus-visible {box-shadow:0 0 18px #ffeab366,inset 0 0 15px #ffeab330;}
+.scene-painted-hotspot:active {background:#ffeac226;}
+.library-stage .scene-painted-hotspot .memory-hotspot-label {opacity:0;}
+.library-stage .scene-painted-hotspot:hover .memory-hotspot-label,.library-stage .scene-painted-hotspot:focus-visible .memory-hotspot-label {opacity:1;}
+.city-illustrated .city-floating-banners,.city-illustrated .city-walker,.city-illustrated .city-scene-sign,.city-illustrated .fauna-addon-decoration {display:none;}
+.city-illustrated .city-hotspot {min-width:calc(44px / var(--scene-scale,1));min-height:calc(44px / var(--scene-scale,1));}
+.city-illustrated .city-plaza {width:var(--hotspot-width);height:var(--hotspot-height);filter:drop-shadow(0 5px 3px #4d385c45);}
+.city-illustrated .city-has-sprite .city-hotspot-symbol {width:100%;height:100%;background:transparent;border:0;box-shadow:none;}
+.city-illustrated .city-has-sprite .city-hotspot-symbol img {width:100%;height:100%;object-fit:contain;pointer-events:none;}
+.city-illustrated .city-plaza>span:last-child {position:absolute;top:100%;font-size:15px;}
+.city-illustrated .city-plaza::before {content:'✦';position:absolute;right:0;top:12%;color:#fff4b9;font-size:24px;text-shadow:0 0 8px #ba8cda;animation:cityObjectPulse 3.8s ease-in-out infinite;}
+.city-illustrated .city-plaza:hover .city-hotspot-symbol {transform:none;filter:drop-shadow(0 0 6px #ffe3a8);}
+.city-illustrated .city-curtains-open {box-shadow:0 0 35px #ffe4b88c,inset 0 0 30px #ffe4b855;}
+.city-illustrated .fauna-addon-action {min-width:calc(44px / var(--scene-scale,1));min-height:calc(44px / var(--scene-scale,1));}
+.city-illustrated.city-art-fallback .scene-painted-hotspot .city-hotspot-symbol,.city-illustrated.city-art-fallback .scene-painted-hotspot .memory-hotspot-icon {visibility:visible;}
+.city-illustrated.city-art-fallback .scene-painted-hotspot::before {display:none;}
+.city-explorer .city-zoom {position:static;display:flex;justify-content:flex-end;gap:8px;padding:8px 10px;background:#f4eaf8;}
+.city-explorer .city-zoom button {min-width:44px;min-height:44px;}
+.city-explorer .city-pan-hint {display:none;}
+.city-explorer .city-tabs button {min-height:44px;background:#fff6e7;border-color:#c4a1d1;color:#5c3f72;font-size:14px;}
+.city-explorer .city-tabs button.is-active {background:#694583;color:#fff4dd;}
+.city-explorer .city-toolbar small,.city-explorer .city-diary p {font-size:14px;line-height:1.5;}
+.city-explorer .city-message-text,.city-popup .city-popup-desc,.city-popup .city-letter-reading p,.city-popup .city-month-details p {font-size:16px;line-height:1.55;overflow-wrap:anywhere;}
+.city-explorer .city-message-close,.city-popup .city-popup-close {min-width:44px;min-height:44px;}
+.city-popup .city-month,.city-popup .city-envelope {font-size:14px;overflow-wrap:anywhere;}
+@keyframes cityObjectPulse {0%,100%{opacity:.65;transform:scale(.9)}50%{opacity:1;transform:scale(1.06)}}
+@media(max-width:650px){.city-explorer .city-tabs button{font-size:12px;}.city-explorer .city-toolbar small{font-size:13px;}}
+@media(hover:none){.library-stage .scene-painted-hotspot .memory-hotspot-label{opacity:1;}}
+@media(prefers-reduced-motion:reduce){.scene-painted-hotspot,.scene-painted-hotspot::before,.city-illustrated *,.city-illustrated *::before{animation:none!important;transition:none!important;}}

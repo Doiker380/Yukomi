@@ -1,0 +1,64 @@
+/* Capas panorámicas piloto. Todo queda dentro de stage; comparte zoom y desplazamiento. */
+.scene-layer-background {position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none;user-select:none}
+.scene-layer-root,.scene-layer {position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.scene-layer-decorations {z-index:2}
+.scene-layer-characters {z-index:7}
+.scene-layer-objects {z-index:10}
+.scene-layer-navigation {z-index:12}
+.scene-element {position:absolute;pointer-events:none}
+.scene-element-navigation,.scene-element-characters,.scene-element-objects {pointer-events:auto}
+.scene-element-navigation,.scene-element-characters,.scene-element-objects {transform:translate(-50%,-50%) scale(var(--element-scale,1));transform-origin:center center}
+.scene-element-decorations {transform:scale(var(--element-scale,1));transform-origin:top left}
+.scene-position-top-left {transform:scale(var(--element-scale,1))}
+.scene-element-navigation .library-hotspot-symbol img {display:block;width:75%;height:75%;object-fit:contain;pointer-events:none}
+.scene-object {border:2px solid #fff0da;border-radius:16px;background:#f9edfbf5;color:#635076;min-width:75px;min-height:66px;display:grid;place-items:center;gap:5px;padding:8px;box-shadow:0 5px 15px #392b5e55;cursor:pointer;touch-action:manipulation}
+.scene-object-symbol {display:grid;place-items:center;width:54px;height:54px;font-size:29px}
+.scene-object-symbol img {max-width:100%;max-height:100%;object-fit:contain;pointer-events:none}
+.scene-object-label {font:800 13px system-ui}
+.scene-element:focus-visible {outline:3px solid #e7ae64;outline-offset:4px}
+@media(prefers-reduced-motion:reduce){.scene-element{animation:none !important;transition:none !important}}
+
+/* Yukoteca 2.3.1: PNGs sobre el escenario sin cambiar la acción ni el área táctil.
+ * El botón de texto sigue visible para navegación y accesibilidad.
+ * Antes de cargar el PNG, se muestra el estilo original como respaldo.
+ */
+.scene-element-navigation.library-hotspot.has-artwork .library-hotspot-symbol {
+  width:142px;
+  height:116px;
+  font-size:inherit;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+  overflow:visible;
+}
+.scene-element-navigation.library-hotspot.has-artwork .library-hotspot-symbol img {
+  display:block;
+  width:100%;
+  height:100%;
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+}
+.scene-element-navigation.library-hotspot.has-artwork:hover .library-hotspot-symbol {
+  transform:translateY(-5px);
+  background:transparent;
+}
+
+/* Yukoteca 2.3.4: PNG grande y etiquetas sin duplicar el nombre ya impreso.
+   El aria-label del botón permanece para lectores de pantalla, sin afectar el progreso. */
+.scene-element-navigation.library-hotspot.has-artwork {
+  width:380px;
+  height:220px;
+  min-width:380px;
+  min-height:220px;
+  padding:0;
+  gap:0;
+}
+.scene-element-navigation.library-hotspot.has-artwork .library-hotspot-symbol {
+  width:100%;
+  height:100%;
+}
+.scene-element-navigation.library-hotspot.has-artwork .library-hotspot-label {
+  display:none;
+}

@@ -1,0 +1,15 @@
+.observatory-illustrated .story-hotspot{min-width:110px;min-height:110px;background:transparent;border:0;box-shadow:none;filter:none;}
+.observatory-illustrated .story-hotspot-symbol{visibility:hidden;}
+.observatory-illustrated .story-hotspot::before{content:'✦';position:absolute;right:4px;top:4px;color:#fff3b1;font-size:28px;text-shadow:0 0 8px #c796ec,0 0 18px #ffe6a5;animation:observGlow 4s ease-in-out infinite;}
+.observatory-illustrated .story-hotspot-label{position:absolute;top:100%;left:50%;transform:translateX(-50%);font-size:16px;color:#fff4d9;background:#30214cdd;border:1px solid #ddbc75;white-space:normal;width:max-content;max-width:190px;}
+.observatory-illustrated .story-hotspot:focus-visible{outline:3px solid #ffdc89;outline-offset:4px;}
+.observatory-illustrated .story-hotspot:hover,.observatory-illustrated .story-hotspot:active{box-shadow:0 0 20px #ffe4ae55;}
+.observatory-illustrated .story-zoom{position:static;display:flex;justify-content:flex-end;padding:8px;gap:8px;background:#eee5f6;}
+.observatory-illustrated .story-move-help{display:none;}
+.observatory-illustrated .story-tab{min-height:44px;}
+.observatory-illustrated .story-finale-sky{background:#181431;min-height:240px;}
+.observatory-fallback .story-hotspot-symbol{visibility:visible;}
+@keyframes observGlow{50%{opacity:.6;transform:scale(.9)}}
+@media(prefers-reduced-motion:reduce){.observatory-illustrated *,.observatory-illustrated *::before{animation:none!important;transition:none!important;}}
+.region-screen:has(.observatory-illustrated) .region-content-text{color:#fff3dc;}
+#regionScreen:has(#observatoryExperience:not([hidden])) .region-content-text h1,#regionScreen:has(#observatoryExperience:not([hidden])) .region-content-text p,#regionScreen:has(#observatoryExperience:not([hidden])) .region-content-text .eyebrow{color:#fff3dc;}

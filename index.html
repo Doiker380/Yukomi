@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#17162c">
+  <meta name="description" content="Un planetita que hice para Yuko, con recuerdos, juegos y muchas cositas nuestras.">
+  <title>Yukoverso · Un planeta para ti</title>
+  <link rel="stylesheet" href="css/styles.css?v=2.9.10">
+  <link rel="stylesheet" href="css/fauna.css?v=1.6">
+  <link rel="stylesheet" href="css/fauna-map.css?v=1.6">
+  <link rel="stylesheet" href="css/fauna-illustrated.css?v=2.4.0">
+  <link rel="stylesheet" href="css/city.css?v=2.1">
+  <link rel="stylesheet" href="css/library.css?v=2.9.6">
+  <link rel="stylesheet" href="css/scene-layers.css?v=2.3.4">
+  <link rel="stylesheet" href="css/story-world.css?v=2.1">
+  <link rel="stylesheet" href="css/cinema-illustrated.css?v=2.9.14">
+  <link rel="stylesheet" href="css/memories.css?v=2.9.6">
+  <link rel="stylesheet" href="css/city-illustrated.css?v=2.5.0">
+  <link rel="stylesheet" href="css/observatory.css?v=2.9.7">
+  <link rel="stylesheet" href="css/painted-glow.css?v=2.9.7">
+  <script type="module" src="js/app.js?v=2.9.14"></script>
+</head>
+<body>
+  <div id="app">
+    <!-- PRESENTACIÓN: no requiere imágenes externas -->
+    <section id="introScreen" class="screen intro-screen" aria-labelledby="introTitle">
+      <div class="stars stars-one" aria-hidden="true"></div>
+      <div class="stars stars-two" aria-hidden="true"></div>
+      <div class="orbital-ring" aria-hidden="true"></div>
+      <div class="planet-wrap" aria-hidden="true">
+        <div class="planet">
+          <svg class="planet-terrain" viewBox="0 0 400 400" focusable="false" aria-hidden="true">
+            <path d="M65 118Q104 49 168 68L186 118Q173 143 134 156L108 200 75 174Z" fill="#b8dcbf"/>
+            <path d="M220 55Q298 43 345 111L325 162 268 170 239 138 208 118Z" fill="#f3c5a5"/>
+            <path d="M74 248Q137 207 175 250L187 298 157 343Q92 329 62 282Z" fill="#c6b5e7"/>
+            <path d="M229 227Q289 189 341 245L321 318Q283 351 233 320L216 277Z" fill="#b4d8d0"/>
+            <path d="M172 180Q210 147 244 184L226 217 190 228 166 208Z" fill="#c5d99e"/>
+            <path d="M95 103Q127 93 139 112M253 103Q292 88 311 124M251 283Q282 264 309 288" fill="none" stroke="#fff" opacity=".35" stroke-width="8" stroke-linecap="round"/>
+          </svg>
+          <div class="planet-shine"></div>
+        </div>
+        <div class="planet-satellite satellite-a">✦</div>
+        <div class="planet-satellite satellite-b">✧</div>
+      </div>
+      <div class="intro-content">
+        <div class="eyebrow">COORDENADAS: UN PLANETITA PARA YUKO</div>
+        <h1 id="introTitle">YUKO<span>VERSO</span></h1>
+        <p>Yukooo, te hice un planeta JAJA.<br>¿Lo exploramos?</p>
+        <button id="exploreButton" class="button button-primary button-xl" type="button">✦ A ver qué hay por aquí</button>
+        <button id="skipButton" class="text-button" type="button">Entrar directo</button>
+      </div>
+      <p class="intro-footnote">Hice todo esto para ti, Yuko. Espero que te guste 💜</p>
+    </section>
+
+    <!-- MAPA PRINCIPAL -->
+    <section id="mapScreen" class="screen map-screen" hidden aria-label="Mapa de Yukoplaneta">
+      <header class="topbar">
+        <div class="topbar-brand"><span class="brand-mark" aria-hidden="true">✦</span><div><strong>Yukoverso</strong><small>Un planetita para ti</small></div></div>
+        <div class="header-actions">
+          <button class="icon-button" id="regionsButton" type="button" title="Lista de regiones" aria-label="Lista de regiones">☰</button>
+          <button class="icon-button" id="passportButton" type="button" title="Pasaporte" aria-label="Ver pasaporte">★</button>
+        </div>
+      </header>
+
+      <main class="map-main">
+        <div id="mapViewport" class="map-viewport" tabindex="0" aria-label="Mapa interactivo. Arrastra, pellizca o utiliza los botones de zoom.">
+          <div id="worldLayer" class="world-layer">
+            <svg class="world-art" viewBox="0 0 1280 900" role="img" aria-label="Mapa ilustrado de continentes e islas del Yukoplaneta">
+              <defs>
+                <linearGradient id="ocean" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#80b4db"/><stop offset=".55" stop-color="#6fa6c7"/><stop offset="1" stop-color="#9dc7cf"/></linearGradient>
+                <linearGradient id="islandGrass" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#c1dfbc"/><stop offset="1" stop-color="#83bda8"/></linearGradient>
+                <linearGradient id="islandLilac" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d4c3ed"/><stop offset="1" stop-color="#a6a3d6"/></linearGradient>
+                <linearGradient id="islandPeach" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f8d4b6"/><stop offset="1" stop-color="#e9aa9f"/></linearGradient>
+                
+                <pattern id="waterline" width="85" height="65" patternUnits="userSpaceOnUse"><path d="M9 25q15-8 30 0 M48 53q12-5 24 0" stroke="#e6faf8" stroke-width="2" opacity=".25" fill="none" stroke-linecap="round"/></pattern>
+              </defs>
+              <rect width="1280" height="900" fill="url(#ocean)"/>
+              <rect width="1280" height="900" fill="url(#waterline)"/>
+              <g fill="none" stroke="#e8fbf3" stroke-width="5" stroke-dasharray="7 17" opacity=".6" stroke-linecap="round">
+                <path d="M308 234Q452 262 566 376"/><path d="M905 249Q800 300 716 386"/><path d="M553 507Q447 542 332 626"/><path d="M735 490Q847 546 958 627"/>
+              </g>
+              <g stroke="#f2f3d9" stroke-width="12" stroke-linejoin="round">
+                <path d="M116 151Q156 92 264 106Q382 100 418 185Q439 258 362 323Q285 351 202 320Q113 303 92 246Q80 194 116 151Z" fill="url(#islandGrass)"/>
+                <path d="M823 130Q897 77 1003 102Q1128 116 1169 220Q1176 321 1086 353Q980 382 866 325Q786 284 795 208Z" fill="url(#islandPeach)"/>
+                <path d="M492 305Q554 262 665 284Q758 280 827 345Q866 423 812 514Q759 568 645 554Q544 558 478 496Q430 429 492 305Z" fill="url(#islandLilac)"/>
+                <path d="M111 568Q174 506 281 521Q402 532 444 609Q458 699 388 758Q289 808 179 750Q88 711 87 638Z" fill="url(#islandLilac)"/>
+                <path d="M862 536Q952 494 1053 528Q1170 552 1195 646Q1192 737 1099 775Q980 808 882 747Q831 685 862 536Z" fill="url(#islandGrass)"/>
+                
+              </g>
+              <g fill="none" stroke="#fff" stroke-linecap="round" opacity=".55" stroke-width="9">
+                <path d="M143 183Q183 142 254 150"/><path d="M903 163Q954 144 1011 163"/><path d="M526 352Q565 322 633 324"/><path d="M151 597Q206 558 261 565"/><path d="M918 581Q974 550 1028 567"/>
+              </g>
+              <g opacity=".75">
+                <g fill="#f8f4fa"><circle cx="196" cy="247" r="14"/><circle cx="337" cy="201" r="11"/><circle cx="280" cy="284" r="10"/></g>
+                <g fill="#a3b9bc"><path d="M884 261l30-50 31 50z"/><path d="M938 283l42-74 41 74z"/><path d="M1018 255l29-46 29 46z"/></g>
+                <g fill="#a2c3a8"><circle cx="575" cy="437" r="20"/><circle cx="722" cy="474" r="27"/><circle cx="674" cy="366" r="19"/></g>
+                <g fill="#f1ad98"><circle cx="208" cy="675" r="19"/><circle cx="361" cy="634" r="19"/></g>
+                <g fill="#79ad9b"><circle cx="931" cy="691" r="22"/><circle cx="1110" cy="681" r="23"/><circle cx="1027" cy="591" r="18"/></g>
+                <g fill="#d9cdf4"><circle cx="601" cy="796" r="14"/><circle cx="717" cy="818" r="14"/></g>
+              </g>
+              <g fill="#ffffff" opacity=".66"><circle cx="54" cy="71" r="3"/><circle cx="1193" cy="70" r="4"/><circle cx="1250" cy="456" r="3"/><circle cx="52" cy="807" r="4"/><circle cx="447" cy="80" r="3"/><circle cx="774" cy="112" r="3"/><circle cx="789" cy="615" r="4"/></g>
+            </svg>
+
+            <!-- Composición vertical independiente: aprovecha mucho mejor el teléfono. -->
+            <svg class="world-art world-art-mobile" viewBox="0 0 720 860" role="img" aria-label="Mapa vertical ilustrado de Yukoplaneta, con cinco regiones">
+              <defs>
+                <linearGradient id="mocean" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#88c4de"/><stop offset=".55" stop-color="#77b4ce"/><stop offset="1" stop-color="#93cbd0"/></linearGradient>
+                <linearGradient id="mislandGreen" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#c9e8c5"/><stop offset="1" stop-color="#8ac4b1"/></linearGradient>
+                <linearGradient id="mislandPeach" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f9d6bd"/><stop offset="1" stop-color="#edaeae"/></linearGradient>
+                <linearGradient id="mislandLilac" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#d9c7f5"/><stop offset="1" stop-color="#ad9fdd"/></linearGradient>
+                <pattern id="mwaves" width="85" height="80" patternUnits="userSpaceOnUse"><path d="M10 27q12-6 24 0 M48 52q10-4 22 0" stroke="#e6faf8" stroke-width="2" opacity=".25" fill="none" stroke-linecap="round"/></pattern>
+              </defs>
+              <rect width="720" height="860" fill="url(#mocean)"/>
+              <rect width="720" height="860" fill="url(#mwaves)"/>
+              <g fill="none" stroke="#e7f8f4" stroke-width="5" opacity=".55" stroke-dasharray="7 16" stroke-linecap="round">
+                <path d="M280 209Q331 305 356 325"/><path d="M444 210Q393 290 360 323"/>
+                <path d="M325 493Q235 547 200 581"/><path d="M390 493Q475 536 519 579"/>
+                
+              </g>
+              <g stroke="#f2f2e2" stroke-width="10" stroke-linejoin="round">
+                <path d="M77 111Q111 55 198 58Q293 64 320 129Q332 212 264 247Q178 276 109 234Q55 198 77 111Z" fill="url(#mislandGreen)"/>
+                <path d="M412 110Q454 53 548 65Q639 87 653 165Q658 239 576 257Q468 267 411 212Q378 157 412 110Z" fill="url(#mislandPeach)"/>
+                <path d="M247 330Q290 292 369 296Q454 300 491 364Q507 447 445 500Q371 532 289 496Q219 460 231 389Z" fill="url(#mislandLilac)"/>
+                <path d="M75 588Q127 530 208 538Q292 551 314 628Q313 709 238 742Q150 755 97 711Q52 667 75 588Z" fill="url(#mislandLilac)"/>
+                <path d="M413 583Q455 532 541 536Q647 552 654 647Q646 735 558 748Q459 745 415 694Q380 642 413 583Z" fill="url(#mislandGreen)"/>
+                
+              </g>
+              <g fill="none" stroke="#fff" stroke-linecap="round" opacity=".52" stroke-width="7">
+                <path d="M116 131Q156 95 216 111"/><path d="M454 127Q494 101 538 114"/><path d="M284 365Q320 332 374 349"/><path d="M105 609Q150 571 211 591"/><path d="M453 617Q490 573 537 601"/>
+              </g>
+              <g fill="#ffffff" opacity=".7"><circle cx="35" cy="300" r="4"/><circle cx="680" cy="349" r="3"/><circle cx="83" cy="820" r="3"/><circle cx="650" cy="1017" r="4"/><circle cx="596" cy="410" r="3"/></g>
+            </svg>
+            <!-- Los botones para las regiones se crean en js/map.js -->
+          </div>
+        </div>
+        <div class="map-heading" aria-hidden="true"><span>☁ EL MAPITA DE YUKO ☁</span><strong>Yukoplaneta</strong></div>
+        <div class="zoom-controls" aria-label="Controles del mapa">
+          <button id="zoomIn" type="button" title="Acercar" aria-label="Acercar">+</button>
+          <button id="zoomOut" type="button" title="Alejar" aria-label="Alejar">−</button>
+          <button id="resetView" type="button" title="Ver mapa completo" aria-label="Ver mapa completo">⌖</button>
+        </div>
+        <div id="regionCard" class="region-card" hidden aria-live="polite">
+          <div class="region-card-icon" id="regionCardIcon" aria-hidden="true">🏰</div>
+          <div class="region-card-content"><small id="regionCardType"></small><h2 id="regionCardTitle"></h2><p id="regionCardDescription"></p></div>
+          <button id="visitButton" class="button button-primary" type="button">Vamos a ver →</button>
+          <button id="closeRegionCard" class="region-card-close" type="button" aria-label="Cerrar panel de región" title="Cerrar panel">×</button>
+        </div>
+        <div id="mapHint" class="map-hint">Mueve el mapa · Toca una región</div>
+      </main>
+      <nav class="bottom-nav" aria-label="Navegación principal">
+        <button id="mapNavButton" class="bottom-nav-button is-current" type="button" aria-current="page"><span aria-hidden="true">🗺️</span>Mapa</button>
+        <button id="listNavButton" class="bottom-nav-button" type="button"><span aria-hidden="true">🧭</span>Regiones</button>
+        <button id="passportNavButton" class="bottom-nav-button" type="button"><span aria-hidden="true">⭐</span>Pasaporte</button>
+        <button id="introNavButton" class="bottom-nav-button" type="button"><span aria-hidden="true">🪐</span>Inicio</button>
+      </nav>
+    </section>
+
+    <!-- ESCENARIOS MODULARES: cinco regiones y un visor único de recuerdos -->
+    <section id="regionScreen" class="screen region-screen" hidden aria-labelledby="regionTitle">
+      <header class="topbar region-topbar"><button id="backToMap" class="button button-ghost" type="button">← Volver al mapa</button><span class="region-topbar-label">YUKOVERSO / AVENTURITA</span></header>
+      <main class="region-content">
+        <div class="region-scenery" id="regionScenery" aria-hidden="true"><span class="scenery-orbit">✦</span><span id="regionBigIcon" class="scenery-main-icon">🏰</span><span class="scenery-small-icon">✧</span></div>
+        <div class="region-content-text"><div id="regionType" class="eyebrow"></div><h1 id="regionTitle"></h1><p id="regionDescription"></p></div>
+        <!-- Escenarios panorámicos: se montan solo al visitar su región. -->
+        <section id="faunaExperience" class="fauna-experience" hidden aria-label="Santuario interactivo de Yukofauna"></section>
+        <section id="cityExperience" class="city-experience" hidden aria-label="Ciudad interactiva de Yukópolis"></section>
+        <section id="libraryExperience" class="library-experience" hidden aria-label="Yukoteca, fotos y álbumes de recuerdos"></section>
+        <section id="observatoryExperience" class="story-experience" hidden aria-label="Observatorio de estrellas, constelaciones y carta"></section>
+        <section id="cinemaExperience" class="story-experience" hidden aria-label="Cine y musicales interactivos"></section>
+        <div id="genericObjects" class="object-zone"><div class="object-zone-header"><h2>Cositas por encontrar</h2><span id="regionDiscoveryCount" class="discovery-count">0/2</span></div><p>Toca las cositas del mapa, escondí unas sorpresas. Lo que encuentres se guarda solito.</p><div id="objectList" class="object-list"></div><div id="objectResponse" class="object-response" hidden role="status"></div></div>
+      </main>
+    </section>
+
+    <!-- DIÁLOGO PARA LISTA Y PASAPORTE -->
+    <dialog id="infoDialog" class="info-dialog" aria-labelledby="dialogTitle"><div class="dialog-top"><h2 id="dialogTitle"></h2><button id="closeDialog" class="icon-button" type="button" aria-label="Cerrar">✕</button></div><div id="dialogContent" class="dialog-content"></div></dialog>
+  </div>
+</body>
+</html>

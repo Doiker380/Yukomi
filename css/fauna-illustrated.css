@@ -1,0 +1,48 @@
+/* Exclusivo de Yukofauna. Los controles acompañan el mismo transform del paisaje. */
+.fauna-illustrated {--magic-glow:#ffe1a0;}
+.fauna-illustrated .fauna-figure img {width:100%;height:100%;object-fit:contain;pointer-events:none;}
+.fauna-illustrated .fauna-hotspot {min-width:calc(44px / var(--scene-scale,1));min-height:calc(44px / var(--scene-scale,1));border-radius:50%;}
+.fauna-illustrated .fauna-penguin .fauna-figure {width:142px;height:155px;animation:none;}
+.fauna-illustrated .fauna-owl .fauna-figure {width:112px;height:135px;animation:none;}
+.fauna-illustrated .fauna-cat .fauna-figure {width:165px;height:120px;animation:none;}
+.fauna-illustrated .fauna-penguin.is-hopping .fauna-figure {animation:faunaHop .32s ease-in-out infinite alternate;}
+.fauna-illustrated .fauna-owl.is-flying .fauna-figure {animation:faunaFlyFast .25s ease-in-out infinite alternate;}
+.fauna-illustrated .fauna-cat.is-chasing .fauna-figure {animation:faunaCatLeap .4s ease-in-out 2;}
+.fauna-illustrated .fauna-hotspot-label {position:absolute;top:100%;left:50%;transform:translateX(-50%);max-width:180px;white-space:normal;width:max-content;text-align:center;padding:5px 9px;border:1px solid #e8c98c;background:#fff9e9ed;color:#4d345d;font-size:14px;box-shadow:0 3px 10px #38234635;opacity:0;pointer-events:none;transition:opacity .2s;}
+.fauna-illustrated .fauna-hotspot:hover .fauna-hotspot-label,.fauna-illustrated .fauna-hotspot:focus-visible .fauna-hotspot-label {opacity:1;}
+.fauna-illustrated .fauna-hotspot::before {content:'✦';position:absolute;right:-6px;top:8px;color:#fff4c4;font-size:22px;text-shadow:0 0 7px #a272c7,0 0 15px var(--magic-glow);animation:faunaMagicPulse 3.5s ease-in-out infinite;pointer-events:none;}
+.fauna-illustrated .fauna-hotspot:hover .fauna-figure,.fauna-illustrated .fauna-hotspot:focus-visible .fauna-figure {filter:drop-shadow(0 0 8px var(--magic-glow)) brightness(1.06);}
+.fauna-illustrated .fauna-hotspot:active {filter:brightness(1.15);}
+.fauna-illustrated .fauna-hotspot:focus-visible {outline:3px solid #fff0a8;outline-offset:5px;box-shadow:0 0 0 6px #74518d;}
+.fauna-illustrated .fauna-painted-hotspot {width:160px;height:110px;}
+.fauna-illustrated .fauna-painted-hotspot .fauna-figure {visibility:hidden;}
+.fauna-illustrated .fauna-painted-hotspot::before {right:30%;top:10%;font-size:32px;}
+.fauna-illustrated .fauna-painted-hotspot[data-blooms='1'],.fauna-illustrated .fauna-painted-hotspot[data-blooms='2'],.fauna-illustrated .fauna-painted-hotspot[data-blooms='3'] {box-shadow:0 0 28px #ffe6ac80,inset 0 0 24px #ffe6ac40;}
+.fauna-illustrated .fauna-family {left:47%;top:57%;width:100px;height:108px;transform:translate(-50%,-50%);}
+.fauna-illustrated .fauna-family-penguin {width:96px;height:105px;top:0;}
+.fauna-illustrated .fauna-family-penguin img {width:100%;height:100%;object-fit:contain;}
+.fauna-illustrated .fauna-zone-sign {font:700 17px Georgia,serif;color:#fff7e2;background:#433052c9;border:1px solid #e8cfa3b0;padding:6px 12px;box-shadow:0 4px 14px #24152e33;}
+.fauna-illustrated .fauna-sign-laguna {left:16%;top:76%;}
+.fauna-illustrated .fauna-sign-refugio {left:43%;top:40%;}
+.fauna-illustrated .fauna-sign-bosque {left:75%;top:17%;}
+.fauna-illustrated .fauna-sign-jardin {left:53%;top:91%;}
+.fauna-illustrated .fauna-scene-title {display:none;}
+.fauna-illustrated .fauna-addon-decoration {display:none;} /* El fondo ya contiene faroles, piedras y setas. */
+.fauna-illustrated .fauna-addon-action {min-width:calc(44px / var(--scene-scale,1));min-height:calc(44px / var(--scene-scale,1));}
+.fauna-illustrated .fauna-addon-icon {font-size:32px;}
+.fauna-illustrated .fauna-addon-label {font-size:14px;white-space:normal;max-width:160px;}
+.fauna-illustrated .memory-hotspot {min-width:calc(44px / var(--scene-scale,1));min-height:calc(44px / var(--scene-scale,1));}
+.fauna-illustrated .memory-hotspot-icon {font-size:38px;}
+.fauna-illustrated .memory-hotspot--illustrated {width:70px;height:85px;padding:7px;border:5px ridge #d6ac66;border-radius:5px;background:#f8edda;box-shadow:0 3px 7px #3c235b66;}
+.fauna-illustrated .memory-hotspot--illustrated::after {content:'✦';position:absolute;right:-9px;top:-14px;color:#fff2ae;text-shadow:0 0 8px #c7a3ff;}
+.fauna-illustrated .fauna-hint {display:none;}
+.fauna-illustrated .fauna-fish .fauna-figure {width:60px;height:48px;}
+.fauna-illustrated .fauna-night-overlay {background:linear-gradient(180deg,#17123bc9,#24385b99 65%,#3d2b5b70);}
+.fauna-explorer .fauna-zone-tabs button {border-color:#c5a3d3;background:#fcf5e9;color:#5b3d70;min-height:44px;}
+.fauna-explorer .fauna-zone-tabs button.is-active {background:#674381;color:#fff6dd;border-color:#b28bcb;}
+.fauna-explorer .fauna-explore-controls button {min-width:44px;min-height:44px;}
+.fauna-explorer .fauna-explore-controls {position:static;display:flex;justify-content:flex-end;gap:8px;padding:7px 10px;background:#f7f0fa;}
+.fauna-explorer .fauna-explore-cue {display:none;}
+@keyframes faunaMagicPulse {0%,100%{opacity:.65;transform:scale(.88)}50%{opacity:1;transform:scale(1.06)}}
+@media(hover:none){.fauna-illustrated .fauna-hotspot-label{opacity:1;font-size:17px;}.fauna-illustrated .fauna-fish .fauna-hotspot-label{display:none;}}
+@media(prefers-reduced-motion:reduce){.fauna-illustrated *, .fauna-illustrated *::before {animation:none!important;transition:none!important;}}
