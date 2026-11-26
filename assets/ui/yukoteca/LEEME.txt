@@ -1,0 +1,1 @@
+Coloca aqui exactamente estos PNG con transparencia: btn_dibujos.png, btn_fotos.png, btn_albumes.png. No renombres los archivos.
