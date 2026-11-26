@@ -69,11 +69,18 @@ const BASE_MEMORIES = [
     locations: [
       { region: 'yukobservatorio', object: 'recuerdo' },
       { region: 'yukoteca', object: 'albumes' },
-      { region: 'yukoteca', object: 'fotos' },
-      { region: 'yukoteca', object: 'marco' }
+      { region: 'yukoteca', object: 'fotos' }
     ], demo: true
   }
 ];
+
+const MARCO_PHOTO = {
+  id: 'marco-captura-2026-05-01', type: 'image', title: 'Una foto especial', description: '',
+  src: 'assets/images/yukoteca/marco/captura_2026-05-01_202559.png',
+  thumbnail: 'assets/images/yukoteca/marco/captura_2026-05-01_202559.png',
+  category: 'Momentos', tags: ['foto', 'yukoteca', 'marco'], primaryRegion: 'yukoteca',
+  locations: [{ region: 'yukoteca', object: 'marco' }]
+};
 
 const YUKOTECA_PHOTOS = [
   { n: 1, title: 'Nuestra primera foto', description: 'Miraaa, nuestra primera fotito en uno de esos juegos random que encontrábamos.' },
@@ -1570,6 +1577,7 @@ const YUKOCINE_CLIPS = [
 
 export const MEMORIES = [
   ...YUKOCINE_CLIPS,
+  MARCO_PHOTO,
   ...BASE_MEMORIES,
   ...YUKOTECA_PHOTOS,
   ...YUKOTECA_CAPTURES

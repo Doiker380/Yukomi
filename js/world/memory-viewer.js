@@ -1,4 +1,4 @@
-import { getMemory, memoriesAt } from '../data/memories.js?v=2.9.14';
+import { getMemory, memoriesAt } from '../data/memories.js?v=2.9.17';
 import { assetUrl } from '../data/asset-manifest.js?v=2.3.5';
 import { attachPaintedGlow } from './painted-glow.js?v=2.9.7';
 

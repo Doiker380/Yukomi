@@ -22,7 +22,8 @@ assert(obs.includes("if (!href) return"), 'El enlace debe ocultarse si no hay UR
 assert(load('carta_yuko.html').includes('extraLetterUrl'), 'La carta independiente no usa el enlace extra');
 assert(MEMORIES.filter(m=>m.id.startsWith('foto-')).length===24,'Deben mantenerse las 24 fotos');
 assert(MEMORIES.filter(m=>m.id.startsWith('captura-skin-')).length===19,'Deben mantenerse las 19 capturas');
-assert(MEMORIES.filter(m=>!m.id.startsWith('clip-')).length===51, 'No cambiar los 51 recuerdos anteriores');
+assert(MEMORIES.filter(m=>!m.id.startsWith('clip-') && m.id!=='marco-captura-2026-05-01').length===51, 'Conservar los 51 recuerdos anteriores');
+assert(MEMORIES.some(m=>m.id==='marco-captura-2026-05-01'), 'Falta la captura elegida para el marco');
 assert(MEMORIES.filter(m=>m.id.startsWith('clip-')).length===73, 'Deben aparecer los 73 clips nuevos');
 assert(REGIONS.length===5, 'Se perdieron regiones');
 assert(LIBRARY_ALBUMS.length===2, 'Se perdieron álbumes');

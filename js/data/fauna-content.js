@@ -1,8 +1,8 @@
 // Textos existentes del santuario. Se muestran como texto seguro, nunca como HTML.
 export const FAUNA_TEXT = {
   "intro": {
-    "title": "Yukooo, llegaste a Yukofauna",
-    "text": "Miraaa, hay un pingüino bebé, un búho y hasta una sorpresa de noche. Ve a curiosear JAJA.",
+    "title": "Yukomi, llegaste a Yukofauna",
+    "text": "Hay un pingüino bebé, un búho y una sorpresa que aparece de noche. Recorre el santuario a tu ritmo.",
     "icon": "🐾"
   },
   "labels": {
@@ -30,7 +30,7 @@ export const FAUNA_TEXT = {
     "postcardTitle": "Una postalita para ti",
     "postcardText": "Feliz cumpleaños, Yuko 💜. Hasta los pingüinos vinieron a celebrarte JAJA. Ojalá tengas muchísimas razones para reírte hoy.",
     "saveHint": "Lo que encuentres se queda guardado. Y sí, puedes jugar otra vez jaja.",
-    "exploreTitle": "Mira todo esto JAJA ✦",
+    "exploreTitle": "Hay mucho por descubrir ✦",
     "exploreInstructions": "Desliza para recorrerlo o toca una zona para ir directo.",
     "tabLaguna": "🐧 Laguna",
     "tabRefugio": "🏠 Refugio",
@@ -53,12 +53,12 @@ export const FAUNA_MESSAGES = {
     "text": "Lo lograsteee. El pingüinito volvió con su familia. Que goood 🐧"
   },
   "replay": {
-    "title": "Otra vez, va JAJA",
+    "title": "Otra ronda",
     "text": "El pingüinito quiere otros 3 pececitos. Lo que ya descubriste se queda guardado."
   },
   "owlReminder": {
     "title": "El búho dejó correo",
-    "text": "Miraaa, dejó una carta por ahí. A ver qué dice JAJA."
+    "text": "Dejó una carta por ahí. A ver qué dice."
   },
   "owlFlight": {
     "title": "Ahí va el búhooo",
@@ -70,19 +70,19 @@ export const FAUNA_MESSAGES = {
   },
   "owlLetter": {
     "title": "Un mensajito del búho",
-    "text": "Dice que aquí se vale gritar, reírse y jugar cualquier cosa random. Literalmente tu hábitat JAJA 🦉"
+    "text": "Dice que aquí se vale gritar, reírse y jugar cualquier cosa random 🦉"
   },
   "catReminder": {
     "title": "El gato quiere jugarrr",
     "text": "Hay un ovillo morado por ahí. Tócalo, a ver qué hace."
   },
   "catStart": {
-    "title": "JAJA despertaste al gato",
+    "title": "Despertaste al gato",
     "text": "Se le escapó el ovillo. Tócalo tres veces para ayudarlo."
   },
   "catWin": {
     "title": "Que goood, lo atrapó",
-    "text": "El gatito ya tiene su ovillo JAJA. Puedes volver a jugar."
+    "text": "El gatito ya tiene su ovillo. Puedes volver a jugar."
   },
   "flowersReminder": {
     "title": "Mira los brillitos",
@@ -94,7 +94,7 @@ export const FAUNA_MESSAGES = {
   },
   "flowersWin": {
     "title": "Ayyy, salieron mariposas",
-    "text": "Despertaste las tres flores. Qué bonitas quedaron JAJA. Puedes repetirlo."
+    "text": "Despertaste las tres flores. Qué bonitas quedaron. Puedes repetirlo."
   }
 };
 
@@ -122,7 +122,7 @@ export const FAUNA_COPY = {
   "dayText": "Ya amaneció en Yukofauna jaja.",
   "fishCount": "🐟 {count} / 3 pececitos",
   "fishStep": "Ya llevas {count} de 3 pececitos. Va biennn.",
-  "catStep": "JAJA se le volvió a escapar. Llevas {count}/3, tócalo otra vez.",
+  "catStep": "Se le volvió a escapar. Llevas {count}/3; tócalo otra vez.",
   "flowerStep": "Ya despertaste {count} de 3 flores. Busca el siguiente brillito."
 };
 export function faunaCopy(key,count) { return FAUNA_COPY[key].replaceAll('{count}',String(count)); }

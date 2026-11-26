@@ -2,27 +2,27 @@ import { assetUrl } from "./data/asset-manifest.js?v=2.9.5a";
 import { MAP_SCENE } from "./data/map-scene.js?v=2.9.5a";
 
 export const REGIONS = [
-  { id: "yukofauna", name: "Yukofauna", icon: "🐧", type: "Un lugar lleno de animalitos", x: 265, y: 216, mx: 195, my: 167, theme: "fauna", description: "Yukooo, hice un lugar con pingüinos bebés y búhos porque obvio tenían que estar aquí JAJA.", objects: [
-    { id: "pinguino", icon: "🐧", name: "Pingüino bebé", message: "Mira ese pingüinitooo. Se ve bien feliz de que hayas venido JAJA." },
-    { id: "buho", icon: "🦉", name: "Búho guardián", message: "El búho dice que aquí se vale reírse a gritos. Literalmente tu especialidad JAJA." },
-    { id: "gato", icon: "🐱", name: "Gato dormilón", message: "El gato vino a dormir, como siempre. Pero al menos vino a tu cumpleaños JAJA." },
+  { id: "yukofauna", name: "Yukofauna", icon: "🐧", type: "Un lugar lleno de animalitos", x: 265, y: 216, mx: 195, my: 167, theme: "fauna", description: "Yukomi, aquí están los pingüinos bebés, los búhos y un rincón para explorar sin prisa.", objects: [
+    { id: "pinguino", icon: "🐧", name: "Pingüino bebé", message: "Mira a ese pingüinito. Se acercó a saludarte." },
+    { id: "buho", icon: "🦉", name: "Búho guardián", message: "El búho cuida el bosque y te dejó un mensaje." },
+    { id: "gato", icon: "🐱", name: "Gato dormilón", message: "Este gato prefirió echarse una siesta en mitad de la fiesta." },
     { id: "flores", icon: "🌷", name: "Flores danzantes", message: "Estas florecitas despiertan si encuentras sus brillitos." },
-    { id: "estrella", icon: "⭐", name: "Estrella escondida", message: "Aaaa encontraste la estrellita secreta. Que goood JAJA." }
+    { id: "estrella", icon: "⭐", name: "Estrella escondida", message: "Encontraste la estrella que aparece de noche. Tengo una sorpresa para ti." }
   ] },
-  { id: "yukocine", name: "Yukocine", icon: "🎬", type: "Para ver clips y otras cositas", x: 982, y: 234, mx: 518, my: 172, theme: "cine", description: "Aquí van tus gritos, tus risas, pelis y otras cosas que había que guardar JAJA.", objects: [
+  { id: "yukocine", name: "Yukocine", icon: "🎬", type: "Para ver clips y otras cositas", x: 982, y: 234, mx: 518, my: 172, theme: "cine", description: "Guardé aquí nuestros clips de partidas, sustos y risas.", objects: [
     { id:"cartelera", icon: "🎟️", name: "Cartelera", message: "Historias y carteles interactivos." },
     { id:"taquilla", icon: "🎫", name: "Taquilla de géneros", message: "Elige una función especial." },
     { id:"proyector", icon: "🍿", name: "Proyector", message: "Clips con reproducción manual." }
   ] },
-  { id: "yukopolis", name: "Yukópolis", icon: "🏰", type: "La ciudad más Yuko de todas", x: 644, y: 416, mx: 360, my: 414, theme: "capital", description: "Esta ciudad está llena de nombres bien raros. Sí, fui yo el de las ideas JAJA.", objects: [
-    { id: "plaza", icon: "⛲", name: "Plaza Yukocéntrica", message: "Yukoooo, bienvenida a tu ciudad JAJA." },
-    { id: "calendario", icon: "📅", name: "Yukocalendario", message: "Sí, cambié todos los meses del calendario JAJA." },
+  { id: "yukopolis", name: "Yukópolis", icon: "🏰", type: "La ciudad más Yuko de todas", x: 644, y: 416, mx: 360, my: 414, theme: "capital", description: "La hice a tu manera, Yukomi. Pasa por el teatro, el correo y los demás rincones.", objects: [
+    { id: "plaza", icon: "⛲", name: "Plaza Yukocéntrica", message: "Bienvenida a Yukópolis, Yukomi." },
+    { id: "calendario", icon: "📅", name: "Yukocalendario", message: "Los meses tienen nombres nuevos; échales un vistazo." },
     { id: "correo", icon: "📮", name: "Yukocorreo", message: "Dejé unos sobrecitos para ti." },
     { id: "partidas", icon: "🏆", name: "Museo de partidas", message: "Aquí guardé las partidas y skins que me gustaban mucho." }
   ] },
   { id: "yukoteca", name: "Yukoteca", icon: "📚", type: "Fotitos y recuerdos nuestros", x: 1012, y: 656, mx: 518, my: 662, theme: "library", description: "Puse aquí las capturas que guardé, las skins match y álbumes para que los veas cuando quieras.", objects: [
     { id: "albumes", icon: "📖", name: "Álbumes de recuerdos", message: "Álbumes para ver fotitos y recordar cositas." },
-    { id: "fotos", icon: "📷", name: "Galería de fotos", message: "Un montóoon de fotos que guardé de nosotros JAJA." }
+    { id: "fotos", icon: "📷", name: "Galería de fotos", message: "Guardé aquí muchas de nuestras fotos." }
   ] },
   { id: "yukobservatorio", name: "Yukobservatorio", icon: "🔭", type: "Un rinconcito bajo las estrellas", x: 272, y: 652, mx: 191, my: 662, theme: "observatory", description: "Aquí sí quería dejarte unos mensajitos más personales. Pásate, Yuko 💜.", objects: [
     { id:"camino", icon: "🌙", name: "Camino estelar", message: "Te dejé unas frases en el caminito." },

@@ -1,6 +1,6 @@
 import { assetUrl } from '../data/asset-manifest.js?v=2.7';
 import { anchorsFor } from '../data/memory-anchors.js?v=2.9.10';
-import { addMemoryHotspots } from '../world/memory-viewer.js?v=2.9.14';
+import { addMemoryHotspots } from '../world/memory-viewer.js?v=2.9.17';
 import { createStoryWorld } from './story-world.js?v=2.9.11';
 import { OBSERVATORY } from '../data/experience-content.js?v=2.9.11';
 import { OBSERVATORY_GLOWS } from '../data/observatory-glows.js?v=2.9.15';

@@ -23,7 +23,7 @@ assert.equal(frame.height,156);
 assert(frame.glow?.path, 'El marco usa contorno luminoso según su perspectiva');
 assert.equal(frame.assetId,undefined, 'El marco pintado no debe cargar otro PNG');
 assert.equal(assetUrl('object.yukoteca.marco_recuerdos'),null);
-assert(memoriesAt('yukoteca','marco').some(m=>m.id==='postal-estelar'));
+assert.deepEqual(memoriesAt('yukoteca','marco').map(m=>m.id),['marco-captura-2026-05-01']);
 const buttonAssets = {
   taller: ['ui.yukoteca.btn_dibujos','assets/ui/yukoteca/btn_dibujos.png'],
   fotos: ['ui.yukoteca.btn_fotos','assets/ui/yukoteca/btn_fotos.png'],

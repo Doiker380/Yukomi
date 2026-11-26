@@ -1,9 +1,9 @@
 import { assetUrl } from '../data/asset-manifest.js?v=2.4.0';
 import { FAUNA_SCENE } from '../data/fauna-scene.js?v=2.4.0';
-import { FAUNA_TEXT, FAUNA_MESSAGES, FAUNA_COPY, faunaCopy } from '../data/fauna-content.js?v=2.9.15';
+import { FAUNA_TEXT, FAUNA_MESSAGES, FAUNA_COPY, faunaCopy } from '../data/fauna-content.js?v=2.9.17';
 import { getCharacterAddons } from '../data/characters.js?v=2.4.0';
 import { anchorsFor } from '../data/memory-anchors.js?v=2.9.10';
-import { addMemoryHotspots } from '../world/memory-viewer.js?v=2.9.14';
+import { addMemoryHotspots } from '../world/memory-viewer.js?v=2.9.17';
 import { createExplorer } from "../world/explorer.js?v=2.4.0";
 import { installSceneAddons } from "../world/scene-addons.js?v=2.4.0";
 import { FAUNA_ADDONS } from "./fauna-addons.js?v=2.4.0";

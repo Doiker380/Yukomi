@@ -27,7 +27,7 @@ const illustratedFrame=MEMORY_ANCHORS.yukoteca.find(a=>a.id==='marco');
 if(!illustratedFrame || illustratedFrame.x!==13.8 || illustratedFrame.y!==74 || !illustratedFrame.painted || illustratedFrame.width!==142 || illustratedFrame.height!==156 || !illustratedFrame.glow?.path) errors.push('El marco no coincide con el cuadro pintado en la mesa');
 if(illustratedFrame?.painted!==true || illustratedFrame?.assetId) errors.push('El marco pintado debe conservar solo la zona interactiva');
 if(assetUrl('object.yukoteca.marco_recuerdos')) errors.push('No debe registrarse un PNG duplicado del marco pintado');
-if(!MEMORIES.some(m=>m.id==='postal-estelar' && m.locations.some(p=>p.region==='yukoteca' && p.object==='marco')))errors.push('Se perdió la acción del marco');
+if(!MEMORIES.some(m=>m.id==='marco-captura-2026-05-01' && m.locations.some(p=>p.region==='yukoteca' && p.object==='marco')))errors.push('Se perdió la foto del marco');
 const regions = new Set(REGIONS.map(r => r.id));
 const anchors = new Set();
 for (const [region, list] of Object.entries(MEMORY_ANCHORS)) {

@@ -8,7 +8,7 @@ const anchor = MEMORY_ANCHORS.yukoteca.find(a=>a.id==='marco');
 assert(anchor && anchor.painted);
 assert.deepEqual([anchor.x,anchor.y],[13.8,74]);
 assert(anchor.glow?.path);
-assert(memoriesAt('yukoteca','marco').some(m=>m.id==='postal-estelar'));
+assert.deepEqual(memoriesAt('yukoteca','marco').map(m=>m.id),['marco-captura-2026-05-01']);
 
 class Node {
   constructor(tag) {this.tagName=tag;this.attrs={};this.children=[];this.classes=[];

@@ -5,8 +5,8 @@ import { createExplorer } from '../world/explorer.js?v=2.4.0';
 import { installSceneAddons } from '../world/scene-addons.js?v=2.4.0';
 import { CITY_ADDONS } from './city-addons.js?v=1.7';
 import { getCharacterAddons } from '../data/characters.js?v=2.4.0';
-import { CITY_MONTHS, CITY_MAIL, CITY_DIALOGUE, CITY_MUSICALS, CITY_UI, cityText } from '../data/city-content.js?v=2.9.16';
-import { addMemoryHotspots } from '../world/memory-viewer.js?v=2.9.14';
+import { CITY_MONTHS, CITY_MAIL, CITY_DIALOGUE, CITY_MUSICALS, CITY_UI, cityText } from '../data/city-content.js?v=2.9.17';
+import { addMemoryHotspots } from '../world/memory-viewer.js?v=2.9.17';
 
 /**
  * Fase 1.7 — Capital panorámica. Ninguna referencia a la lógica de Yukofauna.

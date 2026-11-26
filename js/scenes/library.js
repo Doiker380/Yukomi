@@ -1,13 +1,13 @@
 import { anchorsFor } from '../data/memory-anchors.js?v=2.9.10';
-import { getMemory } from '../data/memories.js?v=2.9.14';
-import { addMemoryHotspots } from '../world/memory-viewer.js?v=2.9.12';
+import { getMemory } from '../data/memories.js?v=2.9.17';
+import { addMemoryHotspots } from '../world/memory-viewer.js?v=2.9.17';
 import { createExplorer } from '../world/explorer.js?v=2.5.1';
 import { installSceneAddons } from '../world/scene-addons.js?v=1.6';
 import { getCharacterLayerEntries } from '../data/characters.js?v=2.3';
 import { LIBRARY_SCENE } from '../data/library-scene.js?v=2.9.10';
 import { mountSceneLayers } from '../world/scene-layers.js?v=2.3.3';
 import { LIBRARY_ADDONS } from './library-addons.js?v=1.8';
-import { LIBRARY_ARTWORKS, LIBRARY_PHOTOS, LIBRARY_ALBUMS } from '../data/library-content.js?v=2.9.14';
+import { LIBRARY_ARTWORKS, LIBRARY_PHOTOS, LIBRARY_ALBUMS } from '../data/library-content.js?v=2.9.17';
 
 /**
  * Yukoteca 2.3: piloto por capas, dibujos, fotos y álbumes. Solo contenido visual y álbumes.
