@@ -61,6 +61,13 @@
 .city-popup-title {font:800 20px Georgia,serif;color:#59446f;}
 .city-popup-close {border:0;border-radius:10px;background:#ebe0f4;color:#5d4c70;min-width:39px;min-height:39px;font-weight:850;cursor:pointer;}
 .city-popup-desc {color:#766686;font-size:14px;line-height:1.5;}
+.city-musicals {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:16px;}
+.city-musical {display:flex;flex-direction:column;justify-content:center;gap:7px;min-height:90px;padding:16px;border:1px solid #dcc9e9;border-radius:14px;background:#f8f0fc;color:#5b4274;text-decoration:none;overflow-wrap:anywhere;}
+.city-musical strong {font:800 16px/1.3 Georgia,serif;}
+.city-musical span {font:700 12px/1.35 system-ui,sans-serif;color:#80668f;}
+.city-musical:hover {background:#f0e3f8;border-color:#ae89c8;}
+.city-musical:focus-visible {outline:3px solid #e4ad58;outline-offset:3px;}
+@media(max-width:540px){.city-musicals{grid-template-columns:1fr;}.city-musical{min-height:72px;padding:12px;}}
 .city-months {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin-top:15px;}
 .city-month {border:1px solid #ddd0e7;border-radius:10px;background:#f7f0fa;padding:12px 6px;color:#634e7a;font:750 12px system-ui;cursor:pointer;min-height:46px;}
 .city-month.is-current {background:#7e69a4;color:#fff;border-color:#7e69a4;}

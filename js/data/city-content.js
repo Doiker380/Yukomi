@@ -28,6 +28,13 @@ export const CITY_DIALOGUE = {
   ]
 };
 
+export const CITY_MUSICALS = [
+  { id:'epic', title:'EPIC: The Musical', kind:'Lista de reproducción', url:'https://www.youtube.com/playlist?list=PLNQpggnSpD4oj3PCsZTzbzLFjHmOxTRHr' },
+  { id:'epic-es', title:'EPIC: The Musical en español (en proceso)', kind:'Lista de reproducción', url:'https://www.youtube.com/playlist?list=PLJsE5AiHMLdI' },
+  { id:'heathers', title:'Heathers', kind:'Video', url:'https://www.youtube.com/watch?v=VhPN8X-uGAw' },
+  { id:'hamilton', title:'Hamilton', kind:'Lista de reproducción', url:'https://www.youtube.com/playlist?list=PLK1wqzZ8S6Rxh4Lird7421tcLNvtpD8uQ' }
+];
+
 // Rótulos y mensajes de interfaz; conservar claves y editar solo valores.
 export const CITY_UI = {
   "banners": "✦　✧　✦　✧",

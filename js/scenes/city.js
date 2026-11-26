@@ -5,7 +5,7 @@ import { createExplorer } from '../world/explorer.js?v=2.4.0';
 import { installSceneAddons } from '../world/scene-addons.js?v=2.4.0';
 import { CITY_ADDONS } from './city-addons.js?v=1.7';
 import { getCharacterAddons } from '../data/characters.js?v=2.4.0';
-import { CITY_MONTHS, CITY_MAIL, CITY_DIALOGUE, CITY_UI, cityText } from '../data/city-content.js?v=2.9.11';
+import { CITY_MONTHS, CITY_MAIL, CITY_DIALOGUE, CITY_MUSICALS, CITY_UI, cityText } from '../data/city-content.js?v=2.9.16';
 import { addMemoryHotspots } from '../world/memory-viewer.js?v=2.9.14';
 
 /**
@@ -229,6 +229,19 @@ export function createCityScene({host, objects, hasDiscovered, discover, memorie
   function theaterTeaser(){
     const button=scene.querySelector('[data-action="teatro"]');
     button.classList.add('city-curtains-open');
+    openPopup(CITY_UI.theaterTitle,body=>{
+      body.append(el('p','city-popup-desc',CITY_UI.theaterText));
+      const list=el('div','city-musicals');
+      CITY_MUSICALS.forEach(musical=>{
+        const link=el('a','city-musical');
+        link.href=musical.url;
+        link.target='_blank';
+        link.rel='noopener noreferrer';
+        link.append(el('strong','',musical.title),el('span','',`${musical.kind} · Abrir en YouTube ↗`));
+        list.append(link);
+      });
+      body.append(list);
+    });
     announce(CITY_UI.theaterTitle,CITY_UI.theaterText,'🎭');
     clearTimeout(curtainTimeout);
     curtainTimeout=setTimeout(()=>button.classList.remove('city-curtains-open'),1700);
