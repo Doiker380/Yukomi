@@ -116,8 +116,10 @@
 .fauna-stage-copy strong { font:800 13px/1.3 system-ui,sans-serif; color:#604a78; }
 .fauna-stage-copy p { margin:3px 0 5px; color:#49485d; font:600 12px/1.35 system-ui,sans-serif; }
 .fauna-stage-close { position:absolute; pointer-events:auto; cursor:pointer; right:3px; top:3px; width:29px; height:29px; display:grid; place-items:center; border:0; border-radius:9px; background:#eee5f7; color:#57476e; font-size:22px; line-height:1; }
-.fauna-stage-close:focus-visible,.fauna-stage-diary:focus-visible { outline:3px solid #dcad64;outline-offset:1px; }
+.fauna-stage-close:focus-visible,.fauna-stage-diary:focus-visible,.fauna-star-link:focus-visible { outline:3px solid #dcad64;outline-offset:1px; }
 .fauna-stage-diary { pointer-events:auto; cursor:pointer; font:800 10px system-ui,sans-serif; color:#62517a; border:0; padding:4px 7px; border-radius:7px; background:#eadff5; }
+.fauna-star-link { display:inline-flex; align-items:center; min-height:44px; margin:5px 0; padding:6px 10px; border-radius:10px; background:#f0e0ff; color:#50346f; font:800 12px/1.25 system-ui,sans-serif; text-decoration:underline; pointer-events:auto; }
+.fauna-star-link[hidden] { display:none; }
 .fauna-diary-tip { color:#897c91; font-size:12px; margin:9px 0 0; }
 .fauna-mail,.fauna-yarn,.fauna-note { z-index:5; min-width:50px; min-height:50px; }
 .fauna-mail .fauna-figure { width:53px; height:52px; animation:faunaMailBounce 1.5s ease-in-out infinite; filter:drop-shadow(0 0 10px #fff7c9); }

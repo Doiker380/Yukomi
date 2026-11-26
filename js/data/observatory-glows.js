@@ -35,15 +35,5 @@ export const OBSERVATORY_GLOWS = Object.freeze([
     id: 'carta', color: '#ffe6b6',
     // Silueta del sobre real sobre la mesa, no del escritorio completo.
     path: 'M 1272 543 L 1348 515 L 1405 535 L 1395 564 L 1290 564 Z M 1272 543 L 1342 548 L 1405 535'
-  },
-  {
-    id: 'celebracion', color: '#d0d7ff',
-    // Esfera armilar: arcos y soporte. La carta del final sigue siendo accesible.
-    path: [
-      'M 1531 351 C 1536 294 1593 269 1656 267 C 1717 265 1748 301 1751 351 C 1754 407 1716 451 1656 458 C 1593 462 1542 421 1531 351 Z',
-      'M 1542 324 C 1605 292 1707 286 1743 331 M 1536 369 C 1580 404 1699 428 1747 373',
-      'M 1645 268 C 1609 313 1605 417 1653 455 M 1666 271 C 1713 322 1713 420 1655 455',
-      'M 1648 454 L 1648 497 L 1610 503 L 1697 503 M 1610 503 L 1605 515 L 1701 515'
-    ].join(' ')
   }
 ]);

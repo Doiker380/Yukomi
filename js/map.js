@@ -27,8 +27,7 @@ export const REGIONS = [
   { id: "yukobservatorio", name: "Yukobservatorio", icon: "🔭", type: "Un rinconcito bajo las estrellas", x: 272, y: 652, mx: 191, my: 662, theme: "observatory", description: "Aquí sí quería dejarte unos mensajitos más personales. Pásate, Yuko 💜.", objects: [
     { id:"camino", icon: "🌙", name: "Camino estelar", message: "Te dejé unas frases en el caminito." },
     { id:"telescopio", icon: "🔭", name: "Telescopio", message: "Mira las constelaciones que hice para ti." },
-    { id:"carta", icon: "💌", name: "Carta estelar", message: "La cartita está aquí, no tienes que hacer ninguna misión." },
-    { id:"celebracion", icon: "✨", name: "Cielo de dieciocho estrellas", message: "18 estrellitas para tu cumple 💜." }
+    { id:"carta", icon: "💌", name: "Carta estelar", message: "La cartita está aquí, no tienes que hacer ninguna misión." }
   ] },
 ];
 

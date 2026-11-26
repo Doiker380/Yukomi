@@ -1,9 +1,9 @@
-import { REGIONS, createMap } from "./map.js?v=2.9.11";
+import { REGIONS, createMap } from "./map.js?v=2.9.15";
 import { loadProgress, saveProgress } from "./storage.js?v=2.1";
-import { createFaunaScene } from "./scenes/fauna.js?v=2.9.14";
+import { createFaunaScene } from "./scenes/fauna.js?v=2.9.15";
 import { createCityScene } from "./scenes/city.js?v=2.9.14";
 import { createLibraryScene } from "./scenes/library.js?v=2.9.14";
-import { createObservatoryScene } from "./scenes/observatory.js?v=2.9.14";
+import { createObservatoryScene } from "./scenes/observatory.js?v=2.9.15";
 import { createCinemaScene } from "./scenes/cinema.js?v=2.9.14";
 import { createMemoryViewer } from "./world/memory-viewer.js?v=2.9.14";
 import { MEMORIES } from "./data/memories.js?v=2.9.14";

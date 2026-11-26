@@ -1,6 +1,6 @@
 import { assetUrl } from '../data/asset-manifest.js?v=2.4.0';
 import { FAUNA_SCENE } from '../data/fauna-scene.js?v=2.4.0';
-import { FAUNA_TEXT, FAUNA_MESSAGES, FAUNA_COPY, faunaCopy } from '../data/fauna-content.js?v=2.9.11';
+import { FAUNA_TEXT, FAUNA_MESSAGES, FAUNA_COPY, faunaCopy } from '../data/fauna-content.js?v=2.9.15';
 import { getCharacterAddons } from '../data/characters.js?v=2.4.0';
 import { anchorsFor } from '../data/memory-anchors.js?v=2.9.10';
 import { addMemoryHotspots } from '../world/memory-viewer.js?v=2.9.14';
@@ -88,7 +88,7 @@ export function createFaunaScene({ host, objects, hasDiscovered, discover, memor
     <div class="fauna-progress"><span data-fauna-text="discoveries"></span><div class="fauna-track" aria-hidden="true"><div id="faunaTrackFill"></div></div></div>
     <div id="faunaResponse" class="fauna-response fauna-dialogue" role="status" aria-live="polite" aria-atomic="true">
       <span id="faunaResponseIcon" class="fauna-response-icon" aria-hidden="true" data-fauna-text="responseIcon"></span>
-      <div><strong id="faunaResponseTitle"></strong><p id="faunaResponseText"></p></div>
+      <div><strong id="faunaResponseTitle"></strong><p id="faunaResponseText"></p><a id="faunaResponseStarLink" class="fauna-star-link" target="_blank" rel="noopener noreferrer" hidden></a></div>
     </div>
     <p id="faunaQuestHint" class="fauna-quest-hint" data-fauna-text="initialQuest"></p>
     <p class="fauna-diary-tip" data-fauna-text="diaryTip"></p>
@@ -132,6 +132,7 @@ export function createFaunaScene({ host, objects, hasDiscovered, discover, memor
   explorer.querySelector('.fauna-message-dock').innerHTML = `    <aside id="faunaStageDialogue" class="fauna-stage-dialogue" hidden aria-label="Mensajito de Yukofauna">
       <span id="faunaStageIcon" class="fauna-stage-icon" aria-hidden="true" data-fauna-text="stageIcon"></span>
       <div class="fauna-stage-copy"><strong id="faunaStageTitle"></strong><p id="faunaStageText"></p>
+        <a id="faunaStageStarLink" class="fauna-star-link" target="_blank" rel="noopener noreferrer" hidden></a>
         <button id="faunaSeeDiary" type="button" class="fauna-stage-diary" data-fauna-text="seeDiary"></button>
       </div>
       <button id="faunaStageClose" type="button" class="fauna-stage-close" aria-label="Cerrar mensaje" data-fauna-text="close"></button>
@@ -139,6 +140,10 @@ export function createFaunaScene({ host, objects, hasDiscovered, discover, memor
   explorer.querySelector('#faunaWorldSpace').append(scene);
   host.append(explorer, panel);
   host.querySelectorAll('[data-fauna-text]').forEach(el=>el.textContent=FAUNA_TEXT.labels[el.dataset.faunaText]);
+  host.querySelectorAll('.fauna-star-link').forEach(el=>{
+    el.href=FAUNA_COPY.starLinkUrl;
+    el.textContent=FAUNA_COPY.starLinkLabel;
+  });
   const nav = createExplorer({
     viewport: explorer.querySelector('#faunaExplorerViewport'),
     space: explorer.querySelector('#faunaWorldSpace'),
@@ -202,6 +207,7 @@ export function createFaunaScene({ host, objects, hasDiscovered, discover, memor
     q('#faunaResponseTitle').textContent = title;
     q('#faunaResponseText').textContent = text;
     q('#faunaResponseIcon').textContent = icon;
+    q('#faunaResponseStarLink').hidden = source !== star;
     response.classList.remove('fauna-bounce');
     requestAnimationFrame(() => response.classList.add('fauna-bounce'));
 
@@ -211,6 +217,7 @@ export function createFaunaScene({ host, objects, hasDiscovered, discover, memor
     // Mensaje completo en el muelle: no necesita desplazarse al diario para leerlo.
     q('#faunaStageText').textContent = text;
     q('#faunaStageIcon').textContent = icon;
+    q('#faunaStageStarLink').hidden = source !== star;
     // Mensaje en el muelle exterior del escenario: no tapa animales ni objetos.
     speech.hidden = false;
     speech.classList.remove('is-appearing');

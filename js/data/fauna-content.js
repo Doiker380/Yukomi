@@ -110,6 +110,8 @@ export const FAUNA_COPY = {
   "flowerStepTitle": "¡Yukofloración!",
   "starTitle": "La estrella escondida",
   "starFallback": "Encontraste la estrellita secretaaa.",
+  "starLinkUrl": "https://doiker380.github.io/CartaYuko/",
+  "starLinkLabel": "Abrir la sorpresa de la estrella ↗",
   "dayButton": "☀️ Ver de día",
   "nightButton": "🌙 Ver de noche",
   "nightHint": "Mira arriba, escondí una estrellita",

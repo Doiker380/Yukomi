@@ -10,7 +10,7 @@ const base=process.env.YUKO_TEST_URL || 'http://localhost:8000';
  for(const [name,viewport] of [['desktop',{width:1440,height:1050}],['mobile',{width:390,height:844}],['small',{width:360,height:740}]]){
   const p=await browser.newPage({viewport,hasTouch:name!=='desktop',isMobile:name!=='desktop',reducedMotion:'reduce'});
   const errors=[];p.on('pageerror',e=>errors.push(e.message));p.on('response',r=>{if(r.status()>=400 && !r.url().includes('favicon')) errors.push(`${r.status()} ${r.url()}`)});
-  const enter=async()=>{await p.goto(base);await p.locator('#skipButton').click();await p.locator('[data-region="yukofauna"]').click();await p.locator('#visitButton').click();await p.locator('.fauna-penguin img').waitFor();await p.locator('#faunaStageClose').click();};
+  const enter=async()=>{await p.goto(base);await p.locator('#skipButton').click();await p.locator('button.region-marker[data-region="yukofauna"]').click();await p.locator('#visitButton').click();await p.locator('.fauna-penguin img').waitFor();await p.locator('#faunaStageClose').click();};
   const click=async(selector)=>{const el=p.locator(selector);await el.scrollIntoViewIfNeeded();if(name==='desktop')await el.click();else await el.tap();};
   const obj=id=>`[data-object="${id}"]`;
   const found=async(id)=>{await p.waitForFunction(key=>JSON.parse(localStorage.getItem('yukoverso_progress_v1')).discoveries.includes(`yukofauna:${key}`),id);};
@@ -30,6 +30,12 @@ const base=process.env.YUKO_TEST_URL || 'http://localhost:8000';
   for(let i=0;i<3;i++)await click(obj('ovillo'));await found('gato');
   await click(obj('flores'));for(let i=0;i<3;i++)await click(obj('flornota'));await found('flores');
   await click('#faunaTimeButton');await click(obj('estrella'));await found('estrella');
+  for(const selector of ['#faunaStageStarLink','#faunaResponseStarLink']){
+   const link=p.locator(selector);
+   assert.equal(await link.isVisible(),true);
+   assert.equal(await link.getAttribute('href'),'https://doiker380.github.io/CartaYuko/');
+   assert.equal(await link.getAttribute('target'),'_blank');
+  }
   assert.equal(await p.locator('#faunaCount').textContent(),'5/5');
   await p.locator('#faunaStageClose').click();await click('[data-fauna-zone="bosque"]');
   await p.screenshot({path:`${out}/${name}-noche.png`,fullPage:true});
@@ -53,7 +59,7 @@ const base=process.env.YUKO_TEST_URL || 'http://localhost:8000';
  }
  // Broken optional art must leave a usable background and SVG characters.
  const p=await browser.newPage();await p.route('**/assets/objects/yukofauna/**',r=>r.abort());await p.route('**/santuario_ilustrado_v1.webp',r=>r.abort());
- await p.goto(base);await p.locator('#skipButton').click();await p.locator('[data-region="yukofauna"]').click();await p.locator('#visitButton').click();
+ await p.goto(base);await p.locator('#skipButton').click();await p.locator('button.region-marker[data-region="yukofauna"]').click();await p.locator('#visitButton').click();
  await p.waitForFunction(()=>document.querySelector('.fauna-landscape')?.src.endsWith('santuario.svg'));
  assert.equal(await p.locator('.fauna-penguin svg').count(),1);await p.close();console.log('PASS fallback background and character');
  } finally {await browser.close();}
